@@ -7,7 +7,7 @@
     margin-top: 120px;
     padding-top: 80px;
     padding-bottom: 0;
-    border-bottom: 8px solid #0ABAB5;
+    border-bottom: 16px solid #0ABAB5;
     overflow: visible;
 }
 
@@ -124,6 +124,10 @@
     font-size: 0.8rem;
 }
 
+.site-footer .container {
+    max-width: 1330px;
+}
+
 .footer-grid {
     display: flex;
     justify-content: space-between;
@@ -134,7 +138,7 @@
 
 .footer-left {
     flex: 2;
-    max-width: 400px;
+    max-width: 550px;
 }
 
 .footer-company-name {
@@ -147,7 +151,7 @@
 
 .footer-address-container {
     display: flex;
-    align-items: flex-start;
+    align-items: flex-end;
     justify-content: space-between;
     margin-bottom: 40px;
 }
@@ -160,12 +164,14 @@
 
 .btn-google-map {
     display: inline-block;
-    padding: 5px 20px;
+    padding: 5px 30px;
     border: 1px solid var(--text-color);
     border-radius: 20px;
     font-size: 0.75rem;
     white-space: nowrap;
     margin-left: 15px;
+    margin-bottom: -3px;
+    align-self: flex-end;
 }
 
 .footer-logo {
@@ -178,8 +184,9 @@
 }
 
 .footer-logo-desc {
-    font-size: 0.75rem;
-    color: var(--text-light);
+    font-size: 13px;
+    color: #8F8F8F;
+    font-weight: 400;
     line-height: 1.8;
 }
 
@@ -285,6 +292,10 @@
 
 /* Responsive */
 @media (max-width: 991px) {
+    .footer-cta-wrapper {
+        padding: 0 20px;
+    }
+
     .footer-cta {
         flex-direction: column;
         padding: 30px 20px;
