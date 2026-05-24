@@ -1,0 +1,78 @@
+/* =========================================
+   SUBPAGE HERO SIMPLE COMPONENT
+   ========================================= */
+
+.subpage-hero-simple {
+    padding-top: 150px;
+    /* Space for header */
+    padding-bottom: 40px;
+    width: 100%;
+}
+
+.subpage-hero-simple-en {
+    text-align: left;
+    color: var(--primary-color);
+    font-size: var(--font-md);
+    font-weight: 500;
+    margin-bottom: 15px;
+    padding-left: 0;
+}
+
+.subpage-hero-simple-bg {
+    position: relative;
+    padding: 40px 100px;
+    margin-left: -100px;
+    margin-bottom: 25px;
+    background-color: var(--primary-light);
+    border-radius: 30px 0 0 30px;
+}
+
+.subpage-hero-simple-bg::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 100%;
+    width: 100vw;
+    background-color: var(--primary-light);
+    z-index: -1;
+}
+
+.subpage-hero-simple-title {
+    color: var(--primary-color);
+    font-size: clamp(2rem, 1.5rem + 2vw, 2.5rem);
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-align: left;
+    margin: 0;
+}
+
+.subpage-breadcrumb-simple {
+    font-size: var(--font-xs);
+    color: var(--text-light);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-align: left;
+}
+
+.subpage-breadcrumb-simple .breadcrumb-link {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.subpage-breadcrumb-simple .breadcrumb-link:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+    .subpage-hero-simple {
+        padding-top: 100px;
+    }
+
+    .subpage-hero-simple-bg {
+        padding: 30px 20px;
+        margin-left: -20px;
+        border-radius: 20px 0 0 20px;
+    }
+}

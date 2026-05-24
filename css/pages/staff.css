@@ -1,0 +1,138 @@
+/* =========================================
+   STAFF PAGE STYLES
+   ========================================= */
+
+.staff-page-section {
+    padding: 60px 0 100px 0;
+}
+
+.staff-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+}
+
+.staff-card {
+    background: #fff;
+    border: 1px solid #F0F0F0;
+    border-radius: 8px;
+    padding: 24px 20px 20px;
+    position: relative;
+    box-shadow: 0px 0px 6px 0px #00000026;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.staff-card-header {
+    width: 100%;
+    margin-bottom: 16px;
+    display: flex;
+    justify-content: center;
+    min-height: 22px; /* To maintain height even if empty */
+}
+
+.staff-department {
+    display: block;
+    width: 100%;
+    text-align: center;
+    font-size: 0.75rem;
+    font-weight: 500;
+    padding: 3px 0;
+    line-height: 1.2;
+}
+
+/* Department Tag Colors */
+.tag-cyan {
+    color: #0ABAB5;
+    border: 1px solid #0ABAB5;
+}
+
+.tag-blue {
+    color: #50BAF7;
+    border: 1px solid #50BAF7;
+}
+
+.tag-orange {
+    color: #EF5407;
+    border: 1px solid #EF5407;
+}
+
+.tag-empty {
+    /* For spacing when no tag is present */
+    border: none;
+    color: transparent;
+}
+
+.staff-card-image {
+    width: 100%;
+    margin-bottom: 15px;
+    background-color: #F8F8F8;
+    aspect-ratio: 1 / 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.staff-card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.staff-card-body {
+    width: 100%;
+    text-align: left;
+    margin-top: auto; /* Pushes text to the bottom if image sizes vary, but flex layout is standard */
+}
+
+.staff-name {
+    font-size: 1.25rem;
+    color: #333;
+    font-weight: 500;
+    margin-bottom: 4px;
+    line-height: 1.2;
+}
+
+.staff-title {
+    font-size: 0.75rem;
+    color: #666;
+    line-height: 1.4;
+}
+
+/* Specific Accent for Sasaki */
+.staff-card-accent {
+    position: absolute;
+    bottom: -1px;
+    right: -1px;
+    width: 32px;
+    height: 32px;
+    border-bottom-right-radius: 8px;
+    overflow: hidden;
+}
+
+.staff-card-accent svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+    .staff-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .staff-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .staff-grid {
+        grid-template-columns: 1fr;
+    }
+}

@@ -1,0 +1,51 @@
+/* =========================================
+   PRIVACY PAGE SPECIFIC STYLES
+   ========================================= */
+
+.privacy-page-section {
+    padding: 60px 0 100px;
+    background-color: var(--white);
+}
+
+.privacy-content {
+    max-width: 1000px;
+    margin: 0 auto;
+    background-color: var(--white);
+}
+
+.privacy-intro {
+    margin-bottom: 50px;
+}
+
+.privacy-section-title {
+    font-size: 1.25rem !important; /* Override service-content-title */
+    color: var(--text-color) !important; /* Override service-content-title */
+    letter-spacing: normal !important;
+    font-weight: 500;
+    margin-bottom: 20px;
+    margin-top: 50px;
+}
+
+.privacy-list {
+    margin-bottom: 40px;
+    padding-left: 0;
+    color: var(--text-light);
+    font-size: var(--font-sm);
+    line-height: 1.8;
+    list-style: none;
+}
+
+.privacy-list li {
+    margin-bottom: 5px;
+    color: var(--text-light);
+}
+
+.privacy-list li::before {
+    content: "・ ";
+    color: var(--text-light);
+}
+
+/* Helper to reduce the large gap before lists */
+.privacy-list-intro {
+    margin-bottom: 15px !important;
+}

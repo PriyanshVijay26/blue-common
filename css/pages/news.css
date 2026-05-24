@@ -1,0 +1,158 @@
+/* ==========================================================================
+   News Page Styles
+   ========================================================================== */
+
+.news-section {
+    padding: 80px 0;
+    background-color: #ffffff;
+}
+
+.news-container {
+    max-width: 1200px;
+    /* Increased width */
+    margin: 0 auto;
+}
+
+/* --- News List --- */
+.news-list {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 60px;
+}
+
+.news-item {
+    display: flex;
+    align-items: flex-start;
+    padding: 25px 0;
+    border-bottom: 1px solid #e0e0e0;
+    text-decoration: none;
+    color: inherit;
+    transition: background-color 0.3s ease;
+}
+
+.news-item:hover {
+    background-color: #fcfcfc;
+}
+
+.news-badge-col {
+    flex: 0 0 130px;
+}
+
+.news-category {
+    display: inline-block;
+    color: #ffffff;
+    font-size: 0.8rem;
+    font-weight: 500;
+    padding: 6px 16px;
+    border-radius: 8px;
+    text-align: center;
+}
+
+/* Badges based on figma screenshots - all seem to use the primary color style */
+.badge-notice {
+    background-color: var(--primary-color, #0ABAB5);
+}
+
+.badge-tax {
+    background-color: var(--primary-color, #0ABAB5);
+}
+
+.badge-seminar {
+    background-color: var(--primary-color, #0ABAB5);
+}
+
+.news-date-col {
+    flex: 0 0 120px;
+    padding-top: 4px;
+    /* Align with text baseline */
+}
+
+.news-date {
+    font-size: 0.9rem;
+    color: var(--text-color, #333333);
+    font-weight: 500;
+}
+
+.news-content-col {
+    flex: 1;
+    padding-top: 3px;
+}
+
+.news-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--text-color, #333333);
+    margin-bottom: 12px;
+    line-height: 1.4;
+}
+
+.news-description {
+    font-size: 0.9rem;
+    color: var(--text-light, #666666);
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* --- Pagination (Reusing Voice Page Styles conceptually) --- */
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-top: 40px;
+}
+
+.page-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 4px;
+    border: 1px solid var(--primary-color, #0ABAB5);
+    color: var(--primary-color, #0ABAB5);
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.page-link:hover {
+    background-color: var(--primary-color, #0ABAB5);
+    color: #ffffff;
+}
+
+.page-link.active {
+    background-color: var(--primary-color, #0ABAB5);
+    color: #ffffff;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .news-section {
+        padding: 50px 0;
+    }
+
+    .news-item {
+        flex-direction: column;
+        padding: 25px 0;
+        gap: 12px;
+    }
+
+    .news-badge-col {
+        flex: none;
+    }
+
+    .news-date-col {
+        flex: none;
+        padding-top: 0;
+    }
+
+    .news-content-col {
+        padding-top: 0;
+    }
+
+    .news-title {
+        font-size: 1.05rem;
+    }
+}

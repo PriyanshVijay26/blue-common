@@ -1,0 +1,448 @@
+/* =========================================
+   PRICING PAGE SPECIFIC STYLES
+   ========================================= */
+
+.pricing-page-section {
+    padding: 60px 0;
+}
+
+/* Service Tabs (Shared with Service Page) */
+.service-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin: 0 auto 60px;
+    max-width: 900px;
+}
+
+.service-tab {
+    flex: 1;
+    background-color: var(--primary-light);
+    color: var(--primary-color);
+    padding: 12px 10px;
+    text-align: center;
+    border-radius: 5px;
+    font-weight: bold;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1.4;
+    transition: all 0.3s ease;
+    font-size: var(--font-sm);
+}
+
+.service-tab:hover {
+    background-color: #d1f0ef;
+}
+
+.service-tab.active {
+    background-color: var(--primary-color);
+    color: var(--white);
+}
+
+@media (max-width: 768px) {
+    .service-tabs {
+        flex-direction: column;
+    }
+}
+
+/* =========================================
+   STARTUP SUPPORT SPECIAL PLAN (創業支援特別プラン)
+   ========================================= */
+
+.startup-plan-section {
+    background-color: #F8F9FA;
+    border-radius: 20px;
+    padding: 60px;
+    margin-top: 80px;
+    margin-bottom: 80px;
+}
+
+.startup-plan-title {
+    color: var(--primary-color);
+    font-size: var(--font-lg);
+    font-weight: 500;
+    margin-bottom: 30px;
+}
+
+.startup-plan-desc {
+    font-size: 0.95rem;
+    color: var(--text-color);
+    line-height: 2;
+    margin-bottom: 40px;
+}
+
+.startup-plan-subtitle-wrapper {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    margin-top: 50px;
+}
+
+.startup-plan-subtitle {
+    color: var(--primary-color);
+    font-size: 1.1rem;
+    font-weight: 500;
+    margin-right: 20px;
+    white-space: nowrap;
+}
+
+.startup-plan-line {
+    flex-grow: 1;
+    height: 1px;
+    background-color: var(--primary-color);
+}
+
+.startup-plan-features-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 40px 0;
+}
+
+.startup-plan-features-list li {
+    font-size: 0.95rem;
+    color: var(--text-color);
+    font-weight: 500;
+    margin-bottom: 12px;
+    position: relative;
+    padding-left: 1em;
+}
+
+.startup-plan-features-list li::before {
+    content: "・";
+    position: absolute;
+    left: 0;
+}
+
+.startup-price-table,
+.startup-service-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #fff;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.startup-price-table th,
+.startup-service-table th {
+    background-color: var(--primary-color);
+    color: var(--white);
+    font-weight: 500;
+    padding: 11px 15px;
+    font-size: 1rem;
+    border-top: 1px solid #D9D9D9;
+    border-bottom: 1px solid #D9D9D9;
+    width: 50%;
+}
+
+.startup-price-table th:first-child,
+.startup-service-table th:first-child {
+    border-right: 1px solid #FFFFFF;
+}
+
+.startup-price-table td,
+.startup-service-table td {
+    padding: 11px 15px;
+    font-size: 0.95rem;
+    color: var(--text-color);
+    border-bottom: 1px solid #D9D9D9;
+    vertical-align: middle;
+    width: 50%;
+}
+
+.startup-price-table td:first-child,
+.startup-service-table td:first-child {
+    text-align: left;
+    padding-left: 30px;
+    background-color: #F7F7F7;
+    border-right: 1px solid #D9D9D9;
+}
+
+.startup-price-table td:last-child {
+    background-color: #FFFFFF;
+}
+
+.startup-service-table tbody tr:nth-child(-n+4) td:last-child,
+.startup-service-table tbody tr:nth-child(n+7) td:last-child {
+    background-color: #E6F5F4;
+}
+
+.startup-service-table tbody tr:nth-child(5) td:last-child,
+.startup-service-table tbody tr:nth-child(6) td:last-child {
+    background-color: #F7F7F7;
+}
+
+.strike {
+    position: relative;
+    display: inline-block;
+    margin: 0 5px;
+}
+
+.strike::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: -5%;
+    width: 110%;
+    height: 2px;
+    background-color: #E86229;
+    transform: rotate(-10deg);
+}
+
+.price-highlight {
+    color: #E86229;
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-left: 5px;
+}
+
+.circle-mark {
+    color: #0ABAB5;
+    font-size: 1.2rem;
+}
+
+.hyphen-mark {
+    color: #0ABAB5;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.startup-plan-notes {
+    margin-top: 30px;
+}
+
+.startup-plan-notes p {
+    font-size: 0.85rem;
+    color: var(--text-light);
+    margin-bottom: 8px;
+    line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+    .startup-plan-section {
+        padding: 30px 20px;
+    }
+
+    .startup-price-table td,
+    .startup-service-table td {
+        padding: 10px;
+        font-size: 0.85rem;
+    }
+
+    .startup-price-table td:first-child,
+    .startup-service-table td:first-child {
+        padding-left: 10px;
+    }
+}
+
+/* =========================================
+   PRICING EXAMPLE SECTION (料金例)
+   ========================================= */
+
+.pricing-example-section {
+    margin-top: 60px;
+    margin-bottom: 80px;
+}
+
+.pricing-example-container {
+    border: 2px solid var(--primary-color);
+    background-color: #FFFFFF;
+}
+
+.pricing-example-header {
+    background-color: var(--primary-color);
+    padding: 15px 20px;
+}
+
+.pricing-example-title {
+    color: var(--white);
+    font-size: 1.1rem;
+    font-weight: 500;
+    margin: 0;
+}
+
+.pricing-example-body {
+    padding: 40px;
+}
+
+.pricing-example-tags {
+    color: var(--primary-color);
+    font-size: 0.95rem;
+    font-weight: 500;
+    margin-bottom: 30px;
+    line-height: 1.8;
+}
+
+.pricing-example-tags .tag-separator {
+    margin: 0 8px;
+    color: #0ABAB5;
+}
+
+.pricing-example-monthly-box {
+    background-color: #E6F5F4;
+    border-radius: 8px;
+    padding: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+.monthly-box-title {
+    color: var(--primary-color);
+    font-size: 1.4rem;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+
+.monthly-box-desc {
+    color: var(--text-color);
+    font-size: 0.9rem;
+}
+
+.monthly-box-right {
+    text-align: right;
+}
+
+.monthly-box-price-row {
+    margin-bottom: 10px;
+    display: flex;
+    align-items: baseline;
+    justify-content: flex-end;
+}
+
+.monthly-box-label {
+    color: var(--primary-color);
+    font-size: 0.9rem;
+    margin-right: 15px;
+}
+
+.monthly-box-amount {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: var(--text-color);
+}
+
+.monthly-box-amount .currency {
+    font-size: 1rem;
+    font-weight: normal;
+}
+
+.monthly-box-yearly-row {
+    font-size: 0.85rem;
+    color: var(--text-color);
+    font-weight: 500;
+}
+
+.pricing-example-spot-title {
+    color: var(--primary-color);
+    font-size: 1rem;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.pricing-example-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 18px;
+    border-top: 1px solid #D9D9D9;
+}
+
+.pricing-example-table td {
+    padding: 15px 20px;
+    font-size: 0.95rem;
+    border-bottom: 1px solid #D9D9D9;
+}
+
+.pricing-example-table tr.bg-gray {
+    background-color: #F7F7F7;
+}
+
+.pricing-example-table .text-right {
+    text-align: right;
+    font-size: 1.1rem;
+}
+
+.pricing-example-total-box {
+    border: 1px solid #D9D9D9;
+    padding: 12px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.total-box-left {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.total-label {
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+.total-desc {
+    color: var(--primary-color);
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+.total-amount {
+    font-size: 1.4rem;
+    font-weight: bold;
+}
+
+.total-amount .currency {
+    font-size: 1rem;
+    font-weight: normal;
+}
+
+.pricing-example-notes {
+    margin-top: 20px;
+}
+
+.pricing-example-notes p {
+    font-size: 0.85rem;
+    color: var(--text-light);
+    margin-bottom: 8px;
+    line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+    .pricing-example-body {
+        padding: 20px;
+    }
+
+    .pricing-example-monthly-box {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+        padding: 20px;
+    }
+
+    .monthly-box-right {
+        text-align: left;
+    }
+
+    .monthly-box-price-row {
+        justify-content: flex-start;
+    }
+
+    .pricing-example-table td {
+        padding: 12px 10px;
+    }
+
+    .pricing-example-total-box {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+
+    .total-box-left {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+    }
+}

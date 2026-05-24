@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>お問い合わせ | Blue Common</title>
+    <!-- Global CSS -->
+    <link rel="stylesheet" href="css/global.css">
+    <!-- Component CSS -->
+    <link rel="stylesheet" href="css/components/header.css">
+    <link rel="stylesheet" href="css/components/footer.css">
+    <link rel="stylesheet" href="css/components/subpage-hero.css">
+    <!-- Page Specific CSS -->
+    <link rel="stylesheet" href="css/pages/contact.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="header-placeholder"></div>
+
+    <main class="main-content">
+        <div id="subpage-hero-placeholder" data-title="お問い合わせ" data-subtitle="Contact" data-breadcrumb="お問い合わせ"></div>
+
+        <section class="contact-section">
+            <div class="container contact-container">
+                <p class="contact-intro">
+                    当事務所ならびにサービスに関して、ご質問や詳しい情報等をご希望の際は、以下のフォームにより簡単にお問い合わせいただけます。<br>
+                    担当者が折り返しご連絡いたしますので、お気軽にお問い合わせください。
+                </p>
+
+                <div class="contact-info-banners">
+                    <div class="contact-banner banner-free">
+                        初回のご相談は無料です
+                    </div>
+                    <div class="contact-banner banner-phone">
+                        お電話でのご相談は <span class="phone-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg></span> <span class="phone-number">03-3408-7488</span> <span class="phone-hours">平日 : 9:30～17:30</span>
+                    </div>
+                </div>
+
+                <form class="contact-form" action="#" method="POST">
+                    
+                    <h3 class="form-section-title">お問い合わせ項目</h3>
+
+                    <div class="form-group">
+                        <div class="form-label-wrap">
+                            <label class="form-label">お問い合わせ項目（複数選択可）</label>
+                            <span class="required-badge">必須</span>
+                        </div>
+                        <div class="checkbox-group">
+                            <label class="custom-checkbox">
+                                <input type="checkbox" name="inquiry_type" value="free_consult">
+                                <span class="checkmark"></span>
+                                無料相談のお申し込み
+                            </label>
+                            <label class="custom-checkbox">
+                                <input type="checkbox" name="inquiry_type" value="service_pricing">
+                                <span class="checkmark"></span>
+                                サービス内容・料金について
+                            </label>
+                            <label class="custom-checkbox">
+                                <input type="checkbox" name="inquiry_type" value="recruit">
+                                <span class="checkmark"></span>
+                                採用について（応募・求人に関するお問い合わせ）
+                            </label>
+                            <label class="custom-checkbox">
+                                <input type="checkbox" name="inquiry_type" value="other">
+                                <span class="checkmark"></span>
+                                その他
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="form-label-wrap">
+                            <label class="form-label">ご検討中のサービス（複数選択可）</label>
+                        </div>
+                        <div class="checkbox-group cols-4">
+                            <label class="custom-checkbox">
+                                <input type="checkbox" name="service_type" value="tax">
+                                <span class="checkmark"></span>
+                                税務顧問・日常サポート
+                            </label>
+                            <label class="custom-checkbox">
+                                <input type="checkbox" name="service_type" value="startup">
+                                <span class="checkmark"></span>
+                                法人設立・創業支援
+                            </label>
+                            <label class="custom-checkbox">
+                                <input type="checkbox" name="service_type" value="finance">
+                                <span class="checkmark"></span>
+                                資金調達・資金繰りサポート
+                            </label>
+                            <label class="custom-checkbox">
+                                <input type="checkbox" name="service_type" value="cloud">
+                                <span class="checkmark"></span>
+                                クラウド会計導入支援
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="form-label-wrap">
+                            <label class="form-label" for="message">お問い合わせ内容（自由記載）</label>
+                        </div>
+                        <textarea id="message" name="message" class="form-textarea" placeholder="ご記入ください。" rows="4"></textarea>
+                    </div>
+
+                    <h3 class="form-section-title mt-60">記入者情報</h3>
+
+                    <div class="form-group">
+                        <div class="form-label-wrap">
+                            <label class="form-label" for="name">お名前</label>
+                            <span class="required-badge">必須</span>
+                        </div>
+                        <input type="text" id="name" name="name" class="form-input" placeholder="例）xxx xxx" required>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="form-label-wrap">
+                            <label class="form-label" for="name_kana">お名前（ふりがな）</label>
+                            <span class="required-badge">必須</span>
+                        </div>
+                        <input type="text" id="name_kana" name="name_kana" class="form-input" placeholder="例）xxx xxx" required>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="form-label-wrap">
+                            <label class="form-label" for="company_name">会社名</label>
+                        </div>
+                        <input type="text" id="company_name" name="company_name" class="form-input" placeholder="ご記入ください。">
+                    </div>
+
+                    <div class="form-group">
+                        <div class="form-label-wrap">
+                            <label class="form-label" for="email">メールアドレス</label>
+                            <span class="required-badge">必須</span>
+                        </div>
+                        <input type="email" id="email" name="email" class="form-input" placeholder="例）xxx@xxx.xxx.jp" required>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="form-label-wrap">
+                            <label class="form-label" for="phone">電話番号</label>
+                        </div>
+                        <input type="tel" id="phone" name="phone" class="form-input" placeholder="000-0000-0000">
+                    </div>
+
+                    <div class="form-privacy-wrap">
+                        <label class="custom-checkbox privacy-checkbox">
+                            <input type="checkbox" name="privacy" required>
+                            <span class="checkmark"></span>
+                            <a href="#" class="privacy-link">プライバシーポリシー</a>について同意する
+                        </label>
+                    </div>
+
+                    <div class="form-submit-wrap">
+                        <button type="submit" class="form-submit-btn">
+                            <span>送信する</span>
+                            <span class="submit-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <div id="footer-placeholder"></div>
+
+    <!-- Main JS -->
+    <script src="js/main.js"></script>
+</body>
+</html>

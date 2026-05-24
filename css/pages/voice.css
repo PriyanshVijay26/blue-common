@@ -1,0 +1,204 @@
+/* =========================================
+   VOICE PAGE STYLES
+   ========================================= */
+
+.voice-section {
+    padding: 60px 0 100px;
+}
+
+.voice-section .container {
+    max-width: 1400px;
+}
+
+/* Tabs */
+.voice-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 50px;
+}
+
+.voice-tab {
+    padding: 8px 45px;
+    background-color: var(--primary-light);
+    color: var(--primary-color);
+    border: none;
+    border-radius: 4px;
+    font-size: var(--font-sm);
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.voice-tab.active,
+.voice-tab:hover {
+    background-color: var(--primary-color);
+    color: var(--white);
+}
+
+/* Grid */
+.voice-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px 30px;
+}
+
+/* Card */
+.voice-card {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    color: var(--text-color);
+    transition: transform 0.3s ease;
+}
+
+.voice-card:hover {
+    transform: translateY(-5px);
+}
+
+.voice-card-img-wrapper {
+    width: 100%;
+    aspect-ratio: 4/3;
+    overflow: hidden;
+    border-radius: 15px;
+    margin-bottom: 20px;
+    background-color: #f5f5f5;
+}
+
+.voice-card-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.voice-card:hover .voice-card-img {
+    transform: scale(1.05);
+}
+
+.voice-card-content {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Tags (Blue Pills) */
+.voice-card-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 12px;
+}
+
+.voice-card-tag {
+    display: inline-block;
+    padding: 4px 12px;
+    background-color: var(--primary-light);
+    color: var(--primary-color);
+    font-size: 0.75rem;
+    font-weight: 500;
+    border-radius: 4px;
+}
+
+/* Typography inside card */
+.voice-card-title {
+    font-size: clamp(1.1rem, 1vw + 0.8rem, 1.25rem);
+    font-weight: 700;
+    margin-bottom: 15px;
+    line-height: 1.5;
+    letter-spacing: 0.05em;
+}
+
+.voice-card-company {
+    font-size: var(--font-sm);
+    color: var(--text-light);
+    margin-bottom: 4px;
+}
+
+.voice-card-name {
+    font-size: clamp(0.95rem, 1vw + 0.5rem, 1.1rem);
+    color: var(--text-color);
+}
+
+/* Pagination */
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    margin-top: 60px;
+}
+
+.page-link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 32px;
+    height: 32px;
+    border: 1px solid var(--primary-color);
+    border-radius: 4px;
+    color: var(--primary-color);
+    font-size: var(--font-sm);
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    background-color: var(--white);
+}
+
+.page-link.active,
+.page-link:hover {
+    background-color: var(--primary-color);
+    color: var(--white);
+}
+
+.page-link.next {
+    padding: 0;
+}
+
+.page-link.next:hover {
+    background-color: var(--primary-color);
+    color: var(--white);
+}
+
+/* Responsive */
+@media (max-width: 991px) {
+    .voice-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px 20px;
+    }
+}
+
+@media (max-width: 767px) {
+    .voice-section {
+        padding: 40px 0 60px;
+    }
+
+    .voice-tabs {
+        justify-content: flex-start;
+        gap: 8px;
+        margin-bottom: 30px;
+        overflow-x: auto;
+        padding-bottom: 10px; /* Space for scrollbar if any */
+        /* Hide scrollbar */
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+    
+    .voice-tabs::-webkit-scrollbar {
+        display: none;
+    }
+    
+    .voice-tab {
+        padding: 8px 20px;
+        font-size: var(--font-xs);
+        white-space: nowrap;
+    }
+    
+    .voice-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    
+    .voice-card-title {
+        font-size: var(--font-sm);
+    }
+}

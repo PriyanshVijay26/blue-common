@@ -1,0 +1,679 @@
+/* =========================================
+   PLAN CARDS (プランのご紹介)
+   ========================================= */
+
+.plans-intro {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 60px;
+    margin-top: 40px;
+}
+
+.plans-intro-text {
+    font-size: 0.95rem;
+    line-height: 2;
+    color: var(--text-color);
+}
+
+.btn-primary {
+    display: inline-block;
+    background-color: var(--primary-color);
+    color: var(--white);
+    padding: 15px 40px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #09a09c;
+}
+
+.plans-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-bottom: 80px;
+}
+
+.plan-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    border: 1px solid #0ABAB5;
+    border-radius: 10px;
+    background-color: #FFFFFF;
+    overflow: hidden;
+    box-shadow: 8px 10px 10px 0px #0ABAB51A;
+}
+
+.plan-card.recommended {
+    border: 2px solid #0ABAB5;
+    position: relative;
+    background-color: #F2FBFF;
+}
+
+.plan-card-badge {
+    background-color: #0ABAB5;
+    color: white;
+    font-size: 0.8rem;
+    font-weight: bold;
+    padding: 4px 12px;
+    border-radius: 4px;
+    display: inline-block;
+    margin-left: 15px;
+    vertical-align: middle;
+}
+
+.plan-card-left {
+    padding: 30px 40px;
+    flex-grow: 1;
+}
+
+.plan-card-title {
+    color: #0ABAB5;
+    font-size: 1.4rem;
+    font-weight: 500;
+    margin: 0 0 10px 0;
+    display: flex;
+    align-items: center;
+}
+
+.plan-card.recommended .plan-card-title {
+    color: #0ABAB5;
+}
+
+.plan-card-subtitle {
+    color: #0ABAB5;
+    font-size: 0.9rem;
+    margin: 0 0 15px 0;
+}
+
+.plan-card.recommended .plan-card-subtitle {
+    color: #0ABAB5;
+}
+
+.plan-card-desc {
+    color: var(--text-color);
+    font-size: 0.9rem;
+    line-height: 1.8;
+    margin: 0;
+}
+
+.plan-card-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 30px 50px;
+    min-width: 200px;
+    position: relative;
+}
+
+.plan-card-right::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 15px;
+    bottom: 15px;
+    width: 1.05px;
+    background-color: #0ABAB5;
+}
+
+.plan-card-price-label {
+    color: #0ABAB5;
+    font-size: 0.85rem;
+    margin-bottom: 5px;
+}
+
+.plan-card.recommended .plan-card-price-label {
+    color: #0ABAB5;
+}
+
+.plan-card-price {
+    font-size: 1.6rem;
+    font-weight: bold;
+    color: var(--text-color);
+}
+
+.plan-card-price .currency {
+    font-size: 1rem;
+    font-weight: normal;
+}
+
+@media (max-width: 768px) {
+    .plans-intro {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 20px;
+        text-align: center;
+    }
+    .plan-card {
+        flex-direction: column;
+    }
+    .plan-card-right {
+        padding: 20px;
+    }
+    .plan-card-right::before {
+        top: 0;
+        left: 20px;
+        right: 20px;
+        bottom: auto;
+        width: auto;
+        height: 1px;
+    }
+    .plan-card-left {
+        padding: 20px;
+    }
+}
+
+/* =========================================
+   PRICING TABLE (月額顧問料金)
+   ========================================= */
+
+.pricing-table-section {
+    margin-top: 100px;
+}
+
+.pricing-table-desc {
+    font-size: 0.95rem;
+    color: var(--text-color);
+    margin-bottom: 30px;
+}
+
+.pricing-table-wrapper {
+    overflow-x: auto;
+    margin-bottom: 25px;
+}
+
+.plans-pricing-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+    min-width: 800px;
+}
+
+.plans-pricing-table th,
+.plans-pricing-table td {
+    border: 1px solid #D9D9D9;
+    padding: 15px 10px;
+    vertical-align: middle;
+}
+
+.plans-pricing-table th.border-none {
+    border: none;
+    background: transparent;
+    padding: 0 0 8px 0;
+}
+
+.recommended-text {
+    color: #0ABAB5;
+    font-weight: bold;
+    font-size: 0.85rem;
+}
+
+.plans-pricing-table th {
+    background-color: #DDEBEA;
+    font-weight: bold;
+    color: var(--text-color);
+    font-size: 0.95rem;
+    width: 20%;
+}
+
+.plans-pricing-table th.col-scale {
+    width: 16%;
+}
+
+.plans-pricing-table th.recommended {
+    background-color: #0ABAB5;
+    color: white;
+}
+
+.plans-pricing-table td {
+    font-size: 0.95rem;
+    color: var(--text-color);
+    background-color: #FFFFFF;
+}
+
+.plans-pricing-table td.col-scale {
+    background-color: #F7F7F7;
+    font-weight: bold;
+}
+
+.plans-pricing-table td.recommended {
+    background-color: #E8F7F6;
+}
+
+.pricing-notes {
+    font-size: 0.85rem;
+    color: #555555;
+    line-height: 1.8;
+}
+
+.pricing-notes p {
+    margin: 0 0 5px 0;
+    padding-left: 1.2em;
+    text-indent: -1.2em;
+}
+
+.pricing-notes .note-indent {
+    display: block;
+    padding-left: 1.2em;
+    text-indent: 0;
+}
+
+/* =========================================
+   STARTUP BANNER (創業3年以内の方へ)
+   ========================================= */
+
+.startup-banner-wrapper {
+    margin: 80px 0;
+}
+
+.startup-banner {
+    background-color: #F5FAFA;
+    border-radius: 20px;
+    padding: 40px 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 10px 30px rgba(10, 186, 181, 0.08);
+}
+
+.startup-banner-title {
+    color: #0ABAB5;
+    font-size: 1.4rem;
+    font-weight: bold;
+    margin: 0 0 15px 0;
+}
+
+.startup-banner-desc {
+    font-size: 0.95rem;
+    color: var(--text-color);
+    line-height: 1.8;
+    margin: 0;
+}
+
+.startup-banner-btn-wrapper {
+    flex-shrink: 0;
+    margin-left: 40px;
+}
+
+@media (max-width: 768px) {
+    .startup-banner {
+        flex-direction: column;
+        padding: 30px;
+        text-align: center;
+    }
+    .startup-banner-btn-wrapper {
+        margin-left: 0;
+        margin-top: 25px;
+    }
+}
+
+/* =========================================
+   SERVICES INCLUDED TABLE (各プランに含まれるサービス)
+   ========================================= */
+
+.services-included-section {
+    margin-top: 80px;
+    margin-bottom: 80px;
+}
+
+.services-included-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+    min-width: 800px;
+}
+
+.services-included-table th,
+.services-included-table td {
+    border: 1px solid #D9D9D9;
+    padding: 15px 10px;
+    vertical-align: middle;
+}
+
+.services-included-table th {
+    background-color: #0ABAB5;
+    color: white;
+    font-weight: bold;
+    font-size: 0.95rem;
+    border: 1px solid white;
+}
+
+.services-included-table td {
+    background-color: #EEF8F8;
+}
+
+.services-included-table td.col-service-name {
+    background-color: #F7F7F7;
+    text-align: left;
+    padding-left: 20px;
+    font-weight: normal;
+    color: var(--text-color);
+}
+
+.services-included-table th.col-service-name {
+    width: 30%;
+}
+
+.circle-mark {
+    color: #0ABAB5;
+    font-size: 1.2rem;
+}
+
+.hyphen-mark {
+    color: #0ABAB5;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.asterisk-mark {
+    color: #0ABAB5;
+    font-size: 0.8rem;
+    margin-left: 5px;
+}
+
+/* =========================================
+   SIMPLE PRICING TABLES (各種申告料金, オプションなど)
+   ========================================= */
+
+.simple-pricing-section {
+    margin-top: 60px;
+    margin-bottom: 60px;
+}
+
+.simple-pricing-title {
+    color: #0ABAB5;
+    font-size: 1.3rem;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.simple-pricing-desc {
+    font-size: 0.95rem;
+    color: var(--text-color);
+    margin-bottom: 20px;
+}
+
+.simple-pricing-table-wrapper {
+    overflow-x: auto;
+    margin-bottom: 15px;
+}
+
+.simple-pricing-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+    min-width: 600px;
+}
+
+.simple-pricing-table th,
+.simple-pricing-table td {
+    border: 1px solid #D9D9D9;
+    padding: 15px 10px;
+    vertical-align: middle;
+}
+
+.simple-pricing-table th {
+    background-color: #0ABAB5;
+    color: white;
+    font-weight: bold;
+    font-size: 0.95rem;
+    border: 1px solid white;
+}
+
+.simple-pricing-table td {
+    font-size: 0.95rem;
+    color: var(--text-color);
+    background-color: #FFFFFF;
+}
+
+.simple-pricing-table td:first-child {
+    background-color: #F7F7F7;
+    text-align: left;
+    padding-left: 20px;
+}
+
+.simple-pricing-table td.text-center-cell {
+    text-align: center;
+    padding-left: 10px;
+}
+
+.simple-pricing-table.alternate-rows tbody tr:nth-child(odd) td {
+    background-color: #F7F7F7;
+}
+
+.simple-pricing-table.alternate-rows tbody tr:nth-child(even) td {
+    background-color: #FFFFFF;
+}
+
+/* =========================================
+   PRICE SIMULATION (料金シミュレーション)
+   ========================================= */
+
+.simulation-cases-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    margin-bottom: 20px;
+}
+
+.simulation-case-card {
+    border: 2px solid #0ABAB5;
+    background-color: #FFFFFF;
+}
+
+.simulation-case-header {
+    background-color: #0ABAB5;
+    color: white;
+    padding: 15px 20px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.case-label {
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+.case-title {
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+.simulation-case-body {
+    padding: 30px;
+}
+
+.simulation-case-desc {
+    font-size: 0.95rem;
+    color: var(--text-color);
+    margin: 0 0 10px 0;
+}
+
+.simulation-case-tags {
+    font-size: 0.9rem;
+    color: #0ABAB5;
+    font-weight: bold;
+    margin: 0 0 25px 0;
+}
+
+.simulation-monthly-box {
+    background-color: #E8F7F6;
+    border-radius: 8px;
+    padding: 25px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.monthly-box-title {
+    color: #0ABAB5;
+    font-size: 1.3rem;
+    margin: 0 0 10px 0;
+    font-weight: bold;
+}
+
+.monthly-box-desc {
+    font-size: 0.9rem;
+    color: var(--text-color);
+    margin: 0;
+}
+
+.monthly-box-right {
+    text-align: right;
+}
+
+.monthly-box-price {
+    margin-bottom: 5px;
+}
+
+.price-label {
+    color: #0ABAB5;
+    font-size: 0.85rem;
+    margin-right: 10px;
+    font-weight: bold;
+}
+
+.price-amount {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: var(--text-color);
+}
+
+.price-yen {
+    font-size: 1rem;
+}
+
+.monthly-box-annual {
+    font-size: 0.85rem;
+    color: var(--text-color);
+}
+
+.spot-section-title {
+    color: #0ABAB5;
+    font-size: 0.95rem;
+    font-weight: bold;
+    margin: 0 0 10px 0;
+}
+
+.spot-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 20px;
+    border-top: 1px solid #D9D9D9;
+}
+
+.spot-row:last-of-type {
+    border-bottom: 1px solid #D9D9D9;
+}
+
+.spot-row.grey-bg {
+    background-color: #F7F7F7;
+}
+
+.simulation-total-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    border: 1px solid #D9D9D9;
+    margin-top: 25px;
+}
+
+.total-left {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.total-label {
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+.total-desc {
+    color: #0ABAB5;
+    font-size: 0.85rem;
+    font-weight: bold;
+}
+
+.total-amount {
+    font-weight: bold;
+    font-size: 1.4rem;
+}
+
+@media (max-width: 768px) {
+    .simulation-monthly-box {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+    .monthly-box-right {
+        text-align: left;
+    }
+    .simulation-total-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+    .total-left {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+    }
+    .simulation-case-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+    }
+}
+
+/* =========================================
+   CONTACT PROMPT
+   ========================================= */
+
+.contact-prompt-section {
+    margin-top: 60px;
+    margin-bottom: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.contact-prompt-box {
+    border: 2px solid #0ABAB5;
+    background-color: #FFFFFF;
+    padding: 40px;
+    text-align: center;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.contact-prompt-title {
+    color: #0ABAB5;
+    font-size: 1.25rem;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.contact-prompt-desc {
+    color: var(--text-color);
+    font-size: 0.95rem;
+    margin: 0;
+}
+
+.contact-prompt-arrow {
+    width: 60px;
+    height: 40px;
+    background: linear-gradient(to bottom, rgba(10, 186, 181, 0.1), rgba(10, 186, 181, 0.4));
+    clip-path: polygon(0 0, 100% 0, 50% 100%);
+    margin: 0 auto;
+}

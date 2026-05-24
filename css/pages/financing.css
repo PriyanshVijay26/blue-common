@@ -1,0 +1,537 @@
+/* =========================================
+   FINANCING PAGE SPECIFIC STYLES
+   ========================================= */
+
+.financing-anchor-links {
+    display: flex;
+    gap: 40px;
+    margin-top: 10px;
+    margin-bottom: 60px;
+}
+
+.financing-anchor-link {
+    display: flex;
+    align-items: center;
+    color: var(--primary-color, #0ABAB5);
+    font-weight: 600;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: opacity 0.3s ease;
+}
+
+.financing-anchor-link:hover {
+    opacity: 0.7;
+}
+
+.financing-anchor-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    border: 1px solid var(--primary-color, #0ABAB5);
+    border-radius: 50%;
+    margin-right: 8px;
+}
+
+.financing-anchor-icon svg {
+    width: 10px;
+    height: 10px;
+    stroke: var(--primary-color, #0ABAB5);
+    stroke-width: 2;
+    fill: none;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+@media (max-width: 768px) {
+    .financing-anchor-links {
+        flex-direction: column;
+        gap: 20px;
+    }
+}
+
+/* =========================================
+   LOAN AND SUBSIDY DETAIL SECTIONS
+   ========================================= */
+
+.financing-detail-section {
+    margin-top: 100px;
+    margin-bottom: 80px;
+}
+
+.financing-section-title {
+    position: relative;
+    background-color: var(--primary-color, #0ABAB5);
+    color: var(--white, #ffffff);
+    font-size: clamp(1.4rem, 1.2rem + 1vw, 1.8rem);
+    font-weight: 500;
+    padding: 25px 60px 25px 40px;
+    border-radius: 0 50px 50px 0;
+    margin-bottom: 60px;
+    display: inline-block;
+    min-width: 60%;
+    letter-spacing: 0.05em;
+    z-index: 1;
+}
+
+/* This creates the illusion that the background reaches infinitely to the left screen edge */
+.financing-section-title::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 100%;
+    width: 50vw;
+    height: 100%;
+    background-color: var(--primary-color, #0ABAB5);
+    z-index: -1;
+}
+
+.financing-section-content {
+    padding-left: 40px;
+    max-width: 900px;
+}
+
+.financing-sub-heading {
+    color: var(--primary-color, #0ABAB5);
+    font-size: 1.25rem;
+    font-weight: 500;
+    margin-bottom: 25px;
+    letter-spacing: 0.05em;
+}
+
+.financing-text {
+    color: var(--text-color, #333333);
+    line-height: 1.8;
+    font-size: 0.95rem;
+    margin-bottom: 30px;
+}
+
+.financing-highlight-text {
+    color: var(--primary-color, #0ABAB5);
+    font-weight: 600;
+    font-size: 0.95rem;
+    margin-bottom: 60px;
+    letter-spacing: 0.05em;
+}
+
+@media (max-width: 991px) {
+    .financing-section-title {
+        padding: 20px 40px 20px 20px;
+        min-width: 80%;
+    }
+    .financing-section-content {
+        padding-left: 10px;
+    }
+}
+
+/* =========================================
+   RECOMMENDATION SECTION
+   ========================================= */
+
+.financing-recommendation {
+    margin-top: 60px;
+    margin-bottom: 60px;
+}
+
+.recommendation-title {
+    font-size: 1.15rem;
+    font-weight: 500;
+    color: var(--text-color, #333333);
+    margin-bottom: 25px;
+    letter-spacing: 0.05em;
+}
+
+.recommendation-box {
+    background-color: var(--primary-light, #E6F5F4);
+    border-radius: 12px;
+    padding: 35px 40px;
+}
+
+.recommendation-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    row-gap: 20px;
+    column-gap: 40px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.recommendation-list li {
+    position: relative;
+    padding-left: 25px;
+    font-size: 0.95rem;
+    color: var(--text-color, #333333);
+    font-weight: 500;
+    line-height: 1.6;
+}
+
+.recommendation-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 6px;
+    width: 12px;
+    height: 12px;
+    background-color: #7AD0CD;
+    border-radius: 50%;
+}
+
+@media (max-width: 768px) {
+    .recommendation-list {
+        grid-template-columns: 1fr;
+    }
+    .recommendation-box {
+        padding: 25px 20px;
+    }
+}
+
+/* =========================================
+   PROBLEMS SECTION OVERRIDES
+   ========================================= */
+
+.financing-problems-override .problems-grid {
+    gap: 20px;
+}
+
+.financing-problems-override .problem-card {
+    min-height: 130px;
+    padding: 25px 15px 15px;
+}
+
+@media (max-width: 991px) {
+    .financing-problems-override .problems-grid {
+        flex-wrap: wrap;
+    }
+    .financing-problems-override .problem-item {
+        flex: 0 0 calc(50% - 10px);
+    }
+}
+
+@media (max-width: 768px) {
+    .financing-problems-override .problem-item {
+        flex: 0 0 100%;
+    }
+}
+
+/* =========================================
+   SOLUTION INTRO SECTION
+   ========================================= */
+
+.financing-solution-intro {
+    text-align: center;
+    margin-top: 50px;
+    margin-bottom: 80px;
+    font-size: 0.95rem;
+    line-height: 2;
+    color: var(--text-color, #333333);
+}
+
+.financing-solution-intro p {
+    margin-bottom: 25px;
+}
+
+.financing-solution-intro p:last-child {
+    margin-bottom: 0;
+}
+
+.financing-solution-intro .highlight-text {
+    color: var(--primary-color, #0ABAB5);
+    font-weight: 600;
+}
+
+/* =========================================
+   FLOW SECTION
+   ========================================= */
+
+.financing-flow-section {
+    margin-bottom: 80px;
+}
+
+.financing-flow-title {
+    color: var(--primary-color, #0ABAB5);
+    font-size: 1.4rem;
+    font-weight: 500;
+    margin-bottom: 40px;
+}
+
+.financing-flow-title span {
+    font-size: 1rem;
+    font-weight: normal;
+}
+
+.financing-flow-list {
+    display: flex;
+    flex-direction: column;
+    margin-left: 60px;
+    max-width: 900px;
+}
+
+.flow-step {
+    display: flex;
+    align-items: stretch;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.flow-step-left {
+    background-color: var(--primary-color, #0ABAB5);
+    color: var(--white, #ffffff);
+    font-weight: 500;
+    width: 250px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 15px 20px;
+}
+
+.flow-step-right {
+    background-color: var(--primary-light, #E6F5F4);
+    color: var(--text-color, #333333);
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    padding: 15px 30px;
+    font-size: 0.95rem;
+}
+
+.flow-arrow {
+    width: 250px;
+    height: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.flow-arrow::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 0;
+    border-left: 7px solid transparent;
+    border-right: 7px solid transparent;
+    border-top: 9px solid #A0E0DD; /* Lighter teal for arrow */
+}
+
+@media (max-width: 768px) {
+    .financing-flow-list {
+        margin-left: 0;
+    }
+    
+    .flow-step {
+        flex-direction: column;
+    }
+    
+    .flow-step-left {
+        width: 100%;
+        padding: 12px 20px;
+    }
+    
+    .flow-step-right {
+        padding: 15px 20px;
+    }
+    
+    .flow-arrow {
+        width: 100%;
+    }
+}
+
+/* =========================================
+   SUPPORT CONTENT SECTION
+   ========================================= */
+
+.financing-support-section {
+    margin-bottom: 100px;
+    margin-top: 60px;
+}
+
+.support-flex-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    gap: 40px;
+    margin-bottom: 60px;
+}
+
+.support-left-box {
+    flex: 0 0 32%;
+    border: 1px solid var(--primary-color, #0ABAB5);
+    border-radius: 12px;
+    padding: 35px 30px;
+    background-color: var(--white, #ffffff);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.support-box-title {
+    color: var(--primary-color, #0ABAB5);
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 30px;
+    text-align: left;
+    letter-spacing: 0.1em;
+}
+
+.support-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.support-list li {
+    position: relative;
+    padding-left: 20px;
+    margin-bottom: 18px;
+    font-size: 0.9rem;
+    color: var(--text-color, #333333);
+    font-weight: 500;
+    line-height: 1.4;
+}
+
+.support-list li:last-child {
+    margin-bottom: 0;
+}
+
+.support-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 5px;
+    width: 10px;
+    height: 10px;
+    background-color: #D3D3D3;
+    border-radius: 50%;
+}
+
+.support-right-image {
+    flex: 0 0 calc(68% - 40px);
+}
+
+.support-right-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 12px;
+}
+
+/* CTA Button */
+.support-cta-container {
+    text-align: center;
+}
+
+.support-cta-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--primary-color, #0ABAB5);
+    color: var(--white, #ffffff);
+    padding: 20px;
+    width: 380px;
+    max-width: 100%;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(10, 186, 181, 0.2);
+    position: relative;
+}
+
+.support-cta-btn:hover {
+    background-color: #09a2a0;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(10, 186, 181, 0.3);
+    color: var(--white);
+}
+
+.cta-arrow {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    position: absolute;
+    right: 20px;
+}
+
+.cta-arrow svg {
+    width: 14px;
+    height: 14px;
+    stroke: var(--white, #ffffff);
+}
+
+@media (max-width: 991px) {
+    .support-flex-container {
+        flex-direction: column;
+    }
+    .support-left-box, .support-right-image {
+        flex: 0 0 100%;
+    }
+    .support-cta-btn {
+        padding: 15px 40px;
+        width: 100%;
+        max-width: 400px;
+    }
+}
+
+/* =========================================
+   SUBSIDY EXAMPLE TABLES
+   ========================================= */
+
+.financing-card-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 15px;
+}
+
+.financing-card-table th,
+.financing-card-table td {
+    padding: 15px 0;
+    font-size: 0.9rem;
+    border-top: 1px solid #A0E0DD; /* Lighter teal line */
+    text-align: left;
+    vertical-align: top;
+}
+
+.financing-card-table tr:last-child th,
+.financing-card-table tr:last-child td {
+    border-bottom: 1px solid #A0E0DD;
+}
+
+.financing-card-table th {
+    color: var(--primary-color, #0ABAB5);
+    font-weight: bold;
+    width: 20%;
+    min-width: 120px;
+}
+
+.financing-card-table td {
+    color: var(--text-color, #333333);
+    line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+    .financing-card-table th, .financing-card-table td {
+        display: block;
+        width: 100%;
+        padding: 10px 0;
+        border-top: none;
+    }
+    .financing-card-table tr {
+        border-top: 1px solid #A0E0DD;
+        display: block;
+        padding: 10px 0;
+    }
+    .financing-card-table tr:last-child {
+        border-bottom: 1px solid #A0E0DD;
+    }
+    .financing-card-table th {
+        padding-bottom: 5px;
+    }
+}
