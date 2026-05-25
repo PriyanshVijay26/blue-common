@@ -31,7 +31,7 @@
     display: flex;
     align-items: flex-start;
     justify-content: flex-end;
-    padding: 160px 40px 60px 20px;
+    padding: 60px 40px 60px 20px;
     z-index: 2;
 }
 
@@ -51,7 +51,7 @@
     width: 100%;
     height: 100%;
     background-size: cover;
-    background-position: center;
+    background-position: center 30%;
     opacity: 0;
     transition: opacity 1.5s ease-in-out;
 }
@@ -68,6 +68,7 @@
     height: 100%;
     background: linear-gradient(to right, rgba(255, 255, 255, 0.0), rgba(255, 255, 255, 0.85));
     z-index: 2;
+    display: none;
 }
 
 .hero-content {
@@ -144,7 +145,7 @@
 
 .one-stop-image img {
     margin: 0 auto;
-    max-width: 800px;
+    max-width: 600px;
     width: 100%;
 }
 
@@ -179,6 +180,27 @@
     flex: 1;
     display: flex;
     justify-content: flex-end;
+}
+
+.logos-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.logo-group {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: nowrap;
+    justify-content: center;
+}
+
+.partner-logo {
+    height: auto;
+    max-height: 105px;
+    object-fit: contain;
 }
 
 .about-row {
@@ -225,14 +247,17 @@
     flex: 1;
     position: relative;
     min-width: 0;
+    margin-right: calc(50% - 50vw);
+    display: flex;
+    justify-content: flex-end;
 }
 
 .about-image {
-    width: calc(50vw - 30px);
+    width: 100%;
+    max-width: 700px;
     height: 400px;
     object-fit: cover;
     border-radius: 60px 0 0 60px;
-    max-width: none;
 }
 
 /* =========================================
@@ -343,20 +368,27 @@
 
 .communication-title {
     color: var(--primary-color);
-    font-size: clamp(1.2rem, 1.5vw + 0.8rem, 1.5rem);
+    font-size: clamp(1.4rem, 1.8vw + 0.8rem, 1.8rem);
     font-weight: 400;
     margin-bottom: 25px;
     letter-spacing: 0.05em;
 }
 
 .communication-desc {
-    font-size: 0.85rem;
+    font-size: 1rem;
     color: var(--text-light);
     line-height: 1.8;
     margin-bottom: 40px;
 }
 
 .communication-logos {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 30px;
+}
+
+.comm-logo-row {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
@@ -369,6 +401,11 @@
     max-height: 35px;
 }
 
+/* Make the first row of logos slightly larger so they visually match the second row */
+.comm-logo-row:first-child img {
+    max-height: 39px;
+}
+
 /* =========================================
    CUSTOMER VOICE SECTION
    ========================================= */
@@ -377,6 +414,7 @@
     padding: 80px 0;
     margin-bottom: 80px;
     z-index: 1;
+    overflow: hidden;
 }
 
 .cv-bg-wrapper {
@@ -410,8 +448,7 @@
 }
 
 .cv-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    display: flex;
     gap: 30px;
     margin-bottom: 50px;
 }
@@ -419,6 +456,8 @@
 .cv-card {
     display: flex;
     flex-direction: column;
+    flex: 0 0 36%;
+    min-width: 280px;
 }
 
 .cv-img {
@@ -505,7 +544,8 @@
    NEWS SECTION
    ========================================= */
 .news-section {
-    padding: 60px 0 100px 10%; /* Increased left padding to push content further right */
+    padding: 60px 0 100px 10%;
+    /* Increased left padding to push content further right */
     background-color: var(--white);
 }
 
@@ -515,7 +555,8 @@
 
 @media (max-width: 768px) {
     .news-section {
-        padding-left: 0; /* Reset for mobile */
+        padding-left: 0;
+        /* Reset for mobile */
     }
 }
 
@@ -575,9 +616,17 @@
     text-align: center;
 }
 
-.badge-notice { background-color: var(--primary-color, #0ABAB5); }
-.badge-tax { background-color: var(--primary-color, #0ABAB5); }
-.badge-seminar { background-color: var(--primary-color, #0ABAB5); }
+.badge-notice {
+    background-color: var(--primary-color, #0ABAB5);
+}
+
+.badge-tax {
+    background-color: var(--primary-color, #0ABAB5);
+}
+
+.badge-seminar {
+    background-color: var(--primary-color, #0ABAB5);
+}
 
 .news-date-col {
     flex: 0 0 120px;
@@ -634,15 +683,16 @@
     display: flex;
     border-radius: 40px 0 0 40px;
     overflow: hidden;
+    position: relative;
 }
 
 .recruit-content {
-    flex: 1;
+    flex: 0 0 55%;
     background-color: #EBEBEB;
-    background-image: url('../images/recruit-bg-pattern.png');
+    background-image: url('../../images/recruit-bg-pattern.jpg');
     background-size: cover;
     background-position: center bottom;
-    padding: 50px 60px 100px 80px;
+    padding: 60px 60px 120px 80px;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -660,7 +710,7 @@
     font-size: 1rem;
     letter-spacing: 0.1em;
     display: block;
-    margin-bottom: 40px;
+    margin-bottom: 60px;
 }
 
 .recruit-desc {
@@ -671,9 +721,12 @@
 }
 
 .recruit-image {
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100%;
     width: 45%;
     object-fit: cover;
-    min-height: 500px;
 }
 
 .recruit-btn {
@@ -753,6 +806,11 @@
     .features-logos {
         justify-content: center;
         width: 100%;
+    }
+
+    .logo-group {
+        justify-content: center;
+        flex-wrap: wrap;
     }
 
     .about-image-wrapper {

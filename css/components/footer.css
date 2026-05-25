@@ -179,7 +179,8 @@
 }
 
 .footer-logo img {
-    max-width: 150px;
+    width: 125px;
+    max-width: 100%;
     margin-bottom: 25px;
 }
 
@@ -301,7 +302,7 @@
         padding: 30px 20px;
         gap: 20px;
     }
-    
+
     .cta-divider {
         width: 100%;
         height: 1px;
@@ -311,7 +312,7 @@
         flex-direction: column;
         gap: 40px;
     }
-    
+
     .site-footer-bottom-container {
         flex-direction: column;
         gap: 20px;
