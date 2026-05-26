@@ -6,46 +6,11 @@
     padding: 60px 0;
 }
 
-/* Service Tabs (Shared with Service Page) */
-.service-tabs {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    margin: 0 auto 60px;
-    max-width: 900px;
+/* Center image only for pricing page */
+img[src="images/pricing-features.jpg"] {
+    object-position: center;
 }
 
-.service-tab {
-    flex: 1;
-    background-color: var(--primary-light);
-    color: var(--primary-color);
-    padding: 12px 10px;
-    text-align: center;
-    border-radius: 5px;
-    font-weight: bold;
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    line-height: 1.4;
-    transition: all 0.3s ease;
-    font-size: var(--font-sm);
-}
-
-.service-tab:hover {
-    background-color: #d1f0ef;
-}
-
-.service-tab.active {
-    background-color: var(--primary-color);
-    color: var(--white);
-}
-
-@media (max-width: 768px) {
-    .service-tabs {
-        flex-direction: column;
-    }
-}
 
 /* =========================================
    STARTUP SUPPORT SPECIAL PLAN (創業支援特別プラン)

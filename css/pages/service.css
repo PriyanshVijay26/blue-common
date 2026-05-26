@@ -67,7 +67,8 @@
 }
 
 .service-content-en {
-    color: #6CD2D0; /* A lighter teal */
+    color: #6CD2D0;
+    /* A lighter teal */
     font-size: var(--font-sm);
     font-weight: 500;
 }
@@ -124,7 +125,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.02);
 }
 
 .problem-icon {
@@ -168,7 +169,7 @@
     .service-tabs {
         flex-direction: column;
     }
-    
+
     .problems-grid {
         flex-direction: column;
     }
@@ -226,15 +227,18 @@
 /* Features Section */
 .service-features-section {
     margin-top: 80px;
-    padding-bottom: 80px;
+    padding-bottom: 0px;
+    margin-bottom: -100px;
 }
 
 .features-header {
     margin-bottom: 40px;
+    position: relative;
+    z-index: 5;
 }
 
 .features-title {
-    font-size: var(--font-lg);
+    font-size: 32px;
     font-weight: 500;
     color: var(--primary-color);
     text-align: left;
@@ -247,11 +251,11 @@
 
 .features-image-wrapper {
     position: absolute;
-    top: 0;
-    right: -10%;
-    width: 65%;
-    height: 100%;
-    border-radius: 20px 0 0 20px;
+    top: -110px;
+    left: 38%;
+    right: calc(-50vw + 50%);
+    height: 550px;
+    border-radius: 40px 0 0 40px;
     overflow: hidden;
     z-index: 1;
 }
@@ -260,6 +264,7 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
+    object-position: top;
 }
 
 .features-cards {
@@ -268,23 +273,29 @@
     display: grid;
     grid-template-columns: 1fr;
     grid-auto-rows: 1fr;
-    gap: 30px;
     max-width: 1050px;
 }
 
 .feature-card {
     background-color: rgba(247, 247, 247, 0.95);
     border-radius: 20px;
-    padding: 45px 40px 30px;
+    padding: 45px 40px 40px;
     box-shadow: 6px 6px 15px rgba(10, 186, 181, 0.1);
-    width: 47.5%; /* 47.5% width to leave exactly a 5% horizontal gap */
+    width: 47.5%;
+    /* 47.5% width to leave exactly a 5% horizontal gap */
     height: 100%;
     position: relative;
     box-sizing: border-box;
     z-index: 2;
 }
 
-/* Removed the negative margin-top so they do not overlap vertically anymore */
+.feature-card:nth-child(2) {
+    margin-top: -50px;
+}
+
+.feature-card:nth-child(3) {
+    margin-top: -100px;
+}
 
 
 .feature-card.card-right {
@@ -313,7 +324,8 @@
 }
 
 .feature-card-desc {
-    font-size: 0.85rem; /* Made slightly smaller than var(--font-sm) */
+    font-size: 0.85rem;
+    /* Made slightly smaller than var(--font-sm) */
     color: var(--text-light);
     line-height: 1.8;
 }
@@ -323,17 +335,23 @@
         position: relative;
         width: 100%;
         height: 300px;
-        right: 0;
+        left: auto;
+        right: auto;
         border-radius: 20px;
         margin-bottom: 30px;
     }
-    
+
     .feature-card {
         width: 100%;
         height: auto;
         min-height: 200px;
     }
-    
+
+    .feature-card:nth-child(2),
+    .feature-card:nth-child(3) {
+        margin-top: 20px;
+    }
+
     .feature-card.card-right {
         justify-self: stretch;
     }
@@ -341,7 +359,7 @@
 
 /* Plans Section */
 .service-plans-section {
-    margin-top: 100px;
+    margin-top: 20px;
 }
 
 .plans-header {
@@ -349,7 +367,7 @@
 }
 
 .plans-title {
-    font-size: var(--font-lg);
+    font-size: 32px;
     font-weight: 500;
     color: var(--primary-color);
     text-align: left;
@@ -380,17 +398,21 @@
     border-bottom: 1px solid #ddd;
 }
 
-.plans-table th, .plans-table td {
+.plans-table th,
+.plans-table td {
     padding: 20px 10px;
     border-left: 1px solid #ddd;
     border-right: 1px solid #ddd;
     vertical-align: top;
 }
 
-.plans-table th:first-child, .plans-table td:first-child {
+.plans-table th:first-child,
+.plans-table td:first-child {
     border-left: none;
 }
-.plans-table th:last-child, .plans-table td:last-child {
+
+.plans-table th:last-child,
+.plans-table td:last-child {
     border-right: none;
 }
 
@@ -414,7 +436,8 @@
     background-color: var(--primary-color);
     color: var(--white);
     position: relative;
-    padding-top: 35px; /* space for badge */
+    padding-top: 35px;
+    /* space for badge */
 }
 
 .recommended-badge {
@@ -490,7 +513,8 @@
 }
 
 .plans-btn {
-    padding: 10px 75px; /* Adjusted horizontal padding */
+    padding: 10px 75px;
+    /* Adjusted horizontal padding */
     font-size: var(--font-sm);
     border-radius: 40px;
     position: relative;
@@ -508,7 +532,8 @@
 }
 
 .plans-btn:hover::before {
-    background-color: var(--white); /* So line matches text on hover */
+    background-color: var(--white);
+    /* So line matches text on hover */
 }
 
 @media (max-width: 991px) {
@@ -517,14 +542,16 @@
         align-items: stretch;
         text-align: center;
     }
-    
+
     .plans-table-wrapper {
         overflow-x: auto;
-        margin-top: 50px; /* accommodate badge */
+        margin-top: 50px;
+        /* accommodate badge */
     }
-    
+
     .plans-desc .nowrap-text {
-        white-space: normal; /* allow wrapping on mobile */
+        white-space: normal;
+        /* allow wrapping on mobile */
     }
 }
 
@@ -552,6 +579,7 @@
 
 .service-cv-section .cv-header {
     margin-bottom: 40px;
+    margin-left: -100px;
 }
 
 .service-cv-section .cv-title {
@@ -570,13 +598,15 @@
 
 .service-cv-content {
     display: flex;
-    gap: 60px;
-    align-items: center;
+    gap: 40px;
+    align-items: stretch;
+    margin-left: -100px;
+    width: calc(100% + 200px);
 }
 
 .service-cv-image {
     flex: 1;
-    max-width: 30%;
+    max-width: 40%;
 }
 
 .service-cv-image img {
@@ -588,7 +618,9 @@
 
 .service-cv-text {
     flex: 1;
-    max-width: 70%;
+    max-width: 60%;
+    display: flex;
+    flex-direction: column;
 }
 
 .service-cv-heading {
@@ -599,14 +631,14 @@
 }
 
 .service-cv-company {
-    font-size: 0.95rem;
+    font-size: 1.05rem;
     color: var(--text-light);
     line-height: 1.6;
     margin-bottom: 30px;
 }
 
 .service-cv-desc {
-    font-size: 0.9rem;
+    font-size: 1rem;
     color: var(--text-color);
     line-height: 1.8;
     margin-bottom: 40px;
@@ -615,11 +647,13 @@
 .service-cv-btn-wrapper {
     display: flex;
     justify-content: flex-end;
+    margin-right: 100px;
+    margin-top: auto;
 }
 
 .service-cv-btn {
     position: relative;
-    padding: 12px 50px 12px 60px;
+    padding: 14px 80px 14px 90px;
     font-size: 0.85rem;
     margin-left: 0;
 }
@@ -629,7 +663,7 @@
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    right: calc(100% - 40px);
+    right: calc(100% - 50px);
     width: 90px;
     height: 1px;
     background-color: var(--text-color);
@@ -641,10 +675,17 @@
 }
 
 @media (max-width: 991px) {
+    .service-cv-section .cv-header {
+        margin-left: 0;
+    }
     .service-cv-content {
         flex-direction: column;
+        margin-left: 0;
+        width: 100%;
     }
-    .service-cv-image, .service-cv-text {
+
+    .service-cv-image,
+    .service-cv-text {
         max-width: 100%;
     }
 }
@@ -709,15 +750,43 @@
     position: relative;
     width: 20px;
     height: 2px;
-    background-color: #9cdbd8; /* Lighter primary color for the minus line */
+    background-color: #9cdbd8;
     flex-shrink: 0;
     margin-left: 20px;
+    transition: transform 0.3s ease;
+}
+
+.faq-icon::after {
+    content: '';
+    position: absolute;
+    top: -9px;
+    left: 9px;
+    width: 2px;
+    height: 20px;
+    background-color: #9cdbd8;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.faq-item.active .faq-icon::after {
+    transform: rotate(90deg);
+    opacity: 0;
 }
 
 .faq-answer {
-    padding: 15px 30px 25px 70px;
+    padding: 0 30px 0 70px;
     background-color: #F8F9FA;
+    border-top: 2px solid transparent;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: max-height 0.3s ease, opacity 0.3s ease, padding 0.3s ease;
+}
+
+.faq-item.active .faq-answer {
+    padding: 15px 30px 25px 70px;
     border-top: 2px solid #FFFFFF;
+    max-height: 1000px;
+    opacity: 1;
 }
 
 .faq-answer p {
@@ -753,11 +822,11 @@
     .faq-question {
         padding: 20px 20px;
     }
-    
+
     .faq-q-mark {
         margin-right: 15px;
     }
-    
+
     .faq-answer {
         padding: 20px 20px 25px 20px;
     }

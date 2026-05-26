@@ -39,6 +39,11 @@ document.addEventListener('DOMContentLoaded', () => {
                     const breadcrumbEl = target.querySelector('#subpage-breadcrumb-current');
                     if (breadcrumbEl) breadcrumbEl.textContent = breadcrumb;
                 }
+                const image = target.getAttribute('data-image');
+                if (image) {
+                    const imageEl = target.querySelector('#subpage-hero-image');
+                    if (imageEl) imageEl.style.backgroundImage = `url('${image}')`;
+                }
             }
 
         } catch (error) {
@@ -56,7 +61,20 @@ document.addEventListener('DOMContentLoaded', () => {
         initMobileMenu();
         initHeroSlider();
         initScrollToTop();
+        initFAQ();
     });
+
+    // FAQ Accordion Logic
+    function initFAQ() {
+        const faqQuestions = document.querySelectorAll('.faq-question');
+        faqQuestions.forEach(question => {
+            question.addEventListener('click', () => {
+                const item = question.closest('.faq-item');
+                // Close other open FAQs if desired (optional, here we allow multiple open)
+                item.classList.toggle('active');
+            });
+        });
+    }
 
     // Hero Slider Logic
     function initHeroSlider() {

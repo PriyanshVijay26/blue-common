@@ -6,6 +6,10 @@
     padding: 60px 0 100px;
 }
 
+.voice-detail-header {
+    margin-left: -100px;
+}
+
 .voice-detail-meta {
     display: flex;
     align-items: center;
@@ -29,9 +33,9 @@
 }
 
 .voice-detail-title {
-    font-size: var(--font-xl);
+    font-size: clamp(1.5rem, 1.2rem + 2vw, 2.25rem);
     font-weight: 700;
-    margin-bottom: 40px;
+    margin-bottom: 60px;
     line-height: 1.4;
 }
 
@@ -222,9 +226,13 @@
         padding: 40px 0 60px;
     }
     
+    .voice-detail-header {
+        margin-left: -20px;
+    }
+    
     .voice-detail-title {
         font-size: var(--font-lg);
-        margin-bottom: 30px;
+        margin-bottom: 45px;
     }
     
     .voice-detail-img-wrapper {
