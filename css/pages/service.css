@@ -69,7 +69,7 @@
 .service-content-en {
     color: #6CD2D0;
     /* A lighter teal */
-    font-size: var(--font-sm);
+    font-size: 1.15rem;
     font-weight: 500;
 }
 
@@ -84,8 +84,24 @@
 .service-content-desc {
     font-size: var(--font-sm);
     line-height: 1.8;
-    color: var(--text-light);
+    color: #333333;
     margin-bottom: 60px;
+}
+
+/* Accounting Badges Section */
+.accounting-badges-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+    margin-bottom: 60px;
+}
+
+.accounting-badges-images {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    flex-shrink: 0;
 }
 
 /* Problems Section */
@@ -95,7 +111,7 @@
 
 .problems-title {
     text-align: left;
-    font-size: var(--font-md);
+    font-size: 1.25rem;
     font-weight: 500;
     color: var(--text-color);
     margin-bottom: 40px;
@@ -142,7 +158,7 @@
 }
 
 .problem-text {
-    font-size: var(--font-xs);
+    font-size: 0.95rem;
     font-weight: 500;
     color: var(--text-color);
     line-height: 1.6;
@@ -158,7 +174,7 @@
 
 .problem-impact {
     text-align: center;
-    font-size: var(--font-xs);
+    font-size: 0.95rem;
     font-weight: 500;
     color: var(--primary-color);
     line-height: 1.6;
@@ -166,12 +182,70 @@
 
 /* Responsive Styles */
 @media (max-width: 768px) {
-    .service-tabs {
+    .service-page-section {
+        padding-top: 0;
+    }
+
+    .service-content-title {
+        font-size: 1.7rem;
+        line-height: 1.4;
+    }
+
+    .service-content-desc {
+        color: #333333;
+        font-size: 0.9rem;
+    }
+
+    .service-content-heading {
+        font-size: 1.35rem;
+    }
+
+    .accounting-badges-section {
         flex-direction: column;
+        align-items: flex-start;
+        gap: 30px;
+        margin-bottom: 40px;
+    }
+
+    .accounting-badges-images {
+        align-self: center;
+    }
+
+    .service-tabs {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+    }
+
+    .service-tab {
+        flex: none !important; /* Override about.css specific rule if needed */
+        width: 100%;
+        max-width: none !important;
+        height: auto;
+        min-height: 64px;
+        padding: 10px;
+        font-size: 0.8rem;
     }
 
     .problems-grid {
         flex-direction: column;
+    }
+
+    .service-solution-section {
+        margin-bottom: 0 !important;
+    }
+
+    .solution-triangle {
+        margin-bottom: 0;
+        padding-bottom: 0;
+    }
+
+    .service-features-section {
+        margin-top: 0;
+    }
+
+    .features-image-wrapper {
+        margin-top: -50px;
     }
 }
 
@@ -331,25 +405,58 @@
 }
 
 @media (max-width: 991px) {
+    .service-features-section {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 60px;
+    }
+
+    .features-content {
+        display: contents;
+    }
+
+    .features-header {
+        order: 2;
+        margin-top: 50px;
+        margin-bottom: 50px;
+    }
+
+    .features-title {
+        font-size: 24px;
+        line-height: 1.4;
+    }
+
     .features-image-wrapper {
+        order: 1;
         position: relative;
-        width: 100%;
+        width: auto;
+        margin-right: -20px;
+        margin-left: 0;
         height: 300px;
+        top: auto;
         left: auto;
         right: auto;
-        border-radius: 20px;
-        margin-bottom: 30px;
+        border-radius: 24px 0 0 24px;
+        margin-bottom: 0;
+    }
+
+    .features-cards {
+        order: 3;
+        display: flex;
+        flex-direction: column;
+        gap: 50px;
     }
 
     .feature-card {
         width: 100%;
         height: auto;
-        min-height: 200px;
+        min-height: 0;
+        padding: 35px 25px 25px;
     }
 
     .feature-card:nth-child(2),
     .feature-card:nth-child(3) {
-        margin-top: 20px;
+        margin-top: 0;
     }
 
     .feature-card.card-right {
@@ -359,6 +466,8 @@
 
 /* Plans Section */
 .service-plans-section {
+    position: relative;
+    z-index: 10;
     margin-top: 20px;
 }
 
@@ -531,27 +640,177 @@
     z-index: 1;
 }
 
-.plans-btn:hover::before {
-    background-color: var(--white);
-    /* So line matches text on hover */
-}
 
 @media (max-width: 991px) {
+    .plans-title {
+        font-size: 24px;
+    }
+
     .plans-footer {
         flex-direction: column;
         align-items: stretch;
         text-align: center;
     }
 
-    .plans-table-wrapper {
-        overflow-x: auto;
-        margin-top: 50px;
-        /* accommodate badge */
-    }
-
     .plans-desc .nowrap-text {
         white-space: normal;
         /* allow wrapping on mobile */
+    }
+}
+
+@media (max-width: 768px) {
+    .plans-btn {
+        padding: 14px 90px;
+        align-self: flex-end;
+    }
+
+    .plans-btn::before {
+        left: -80px;
+        width: 125px;
+    }
+
+    .plans-note {
+        text-align: left;
+        padding: 0 20px 0 10px;
+    }
+
+    .plans-table-wrapper {
+        overflow-x: hidden; /* no horizontal scroll */
+        margin-top: 30px;
+    }
+
+    .plans-table {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        border: none;
+        min-width: 0;
+        width: 100%;
+        row-gap: 0;
+    }
+
+    .plans-table thead,
+    .plans-table tbody,
+    .plans-table tr {
+        display: contents;
+    }
+
+    .plans-table th,
+    .plans-table td {
+        display: flex;
+        align-items: center;
+        border: none;
+        padding: 0;
+    }
+
+    /* Hide row headers and empty top-left cell */
+    .plans-table th:first-child,
+    .plans-table td.row-header {
+        display: none;
+    }
+
+    /* Common for Title Cells (th) */
+    .plans-table th:not(:first-child) {
+        justify-content: flex-start;
+        padding: 15px 20px;
+        background-color: #dcedec; /* Exact light blue from screenshot */
+        font-size: 16px;
+        color: var(--text-color);
+        font-weight: bold;
+        border-top: 1px solid #ccc;
+    }
+    
+    .plans-table th:not(:first-child) br {
+        display: none; /* Keep title in one line */
+    }
+
+    /* Common for Price Cells */
+    .plans-table .price-row td:not(:first-child) {
+        justify-content: flex-end;
+        padding: 15px 20px;
+        background-color: #dcedec;
+        color: var(--text-color);
+        border-top: 1px solid #ccc;
+        border-bottom: 1px solid #ccc;
+    }
+    
+    .plans-table .price-row td .price-number {
+        font-size: 18px;
+        margin-right: 2px;
+    }
+
+    /* Specific overrides for Recommended Plan (Plan 3 - Standard) */
+    .plans-table th.col-recommended,
+    .plans-table .price-row td.col-highlight {
+        background-color: var(--primary-color);
+        color: var(--white);
+        padding-top: 15px; /* reset badge padding */
+    }
+    
+    .plans-table th.col-recommended {
+        flex-direction: row; /* Keep on one line */
+        align-items: center;
+    }
+    
+    .plans-table th.col-recommended .recommended-badge {
+        display: none; /* Hide badge on mobile to match screenshot */
+    }
+
+    /* Features cell */
+    .plans-table tbody tr:first-child td:not(:first-child) {
+        grid-column: 1 / -1;
+        display: block;
+        padding: 0;
+        background: var(--white);
+        margin-bottom: 30px;
+    }
+
+    /* "対応範囲" Label */
+    .plans-table tbody tr:first-child td:not(:first-child)::before {
+        content: "対応範囲";
+        display: block;
+        background-color: #F4F6F7;
+        color: var(--text-color);
+        font-weight: bold;
+        font-size: 13px;
+        padding: 10px 20px;
+        text-align: left;
+        border-bottom: 1px solid #eee;
+    }
+
+    /* Features List */
+    .plans-table .plan-features {
+        padding: 20px 20px 0 35px;
+    }
+    
+    .plans-table .plan-features li {
+        margin-bottom: 12px;
+        font-size: 14px;
+        text-align: left;
+    }
+    
+    .plans-table .plan-features li br {
+        display: none; /* Un-break lines on mobile features list */
+    }
+
+    /* Grid layout assignments */
+    .plans-table th:nth-child(2) { grid-area: 1 / 1 / 2 / 2; }
+    .plans-table .price-row td:nth-child(2) { grid-area: 1 / 2 / 2 / 3; }
+    .plans-table tbody tr:first-child td:nth-child(2) { grid-area: 2 / 1 / 3 / 3; }
+
+    .plans-table th:nth-child(3) { grid-area: 3 / 1 / 4 / 2; }
+    .plans-table .price-row td:nth-child(3) { grid-area: 3 / 2 / 4 / 3; }
+    .plans-table tbody tr:first-child td:nth-child(3) { grid-area: 4 / 1 / 5 / 3; }
+
+    .plans-table th:nth-child(4) { grid-area: 5 / 1 / 6 / 2; }
+    .plans-table .price-row td:nth-child(4) { grid-area: 5 / 2 / 6 / 3; }
+    .plans-table tbody tr:first-child td:nth-child(4) { grid-area: 6 / 1 / 7 / 3; }
+
+    .plans-table th:nth-child(5) { grid-area: 7 / 1 / 8 / 2; }
+    .plans-table .price-row td:nth-child(5) { grid-area: 7 / 2 / 8 / 3; }
+    .plans-table tbody tr:first-child td:nth-child(5) { 
+        grid-area: 8 / 1 / 9 / 3; 
+        margin-bottom: 0;
+        border-bottom: 1px solid #ccc;
     }
 }
 
@@ -670,9 +929,6 @@
     transition: background-color 0.3s ease;
 }
 
-.service-cv-btn:hover::before {
-    background-color: var(--primary-color);
-}
 
 @media (max-width: 991px) {
     .service-cv-section .cv-header {
@@ -687,6 +943,57 @@
     .service-cv-image,
     .service-cv-text {
         max-width: 100%;
+    }
+    
+    .service-cv-btn-wrapper {
+        margin-right: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .service-cv-section {
+        padding: 60px 0;
+        margin-bottom: 60px;
+    }
+
+    .service-cv-section .cv-header {
+        padding: 0 15px;
+    }
+
+    .service-cv-content {
+        padding: 0 15px;
+        gap: 20px;
+        box-sizing: border-box;
+    }
+
+    .service-cv-image img {
+        border-radius: 12px;
+    }
+
+    .service-cv-heading {
+        font-size: 1.1rem;
+        margin-bottom: 15px;
+        line-height: 1.4;
+    }
+
+    .service-cv-company {
+        font-size: 0.85rem;
+        margin-bottom: 20px;
+    }
+
+    .service-cv-desc {
+        font-size: 0.9rem;
+        margin-bottom: 40px;
+    }
+
+    .service-cv-btn-wrapper {
+        justify-content: center;
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    .service-cv-btn {
+        padding: 14px 80px;
     }
 }
 
@@ -804,7 +1111,7 @@
 
 .faq-cta-title {
     color: var(--primary-color);
-    font-size: 1.4rem;
+    font-size: 1.8rem;
     font-weight: 500;
     margin-bottom: 20px;
     letter-spacing: 0.05em;
@@ -812,7 +1119,7 @@
 
 .faq-cta-desc {
     color: var(--text-color);
-    font-size: 0.95rem;
+    font-size: 1.1rem;
     line-height: 1.8;
     display: inline-block;
     text-align: left;
@@ -820,14 +1127,46 @@
 
 @media (max-width: 768px) {
     .faq-question {
-        padding: 20px 20px;
+        padding: 20px 25px;
+        align-items: flex-start;
     }
 
     .faq-q-mark {
-        margin-right: 15px;
+        margin-right: 12px;
+        line-height: 1.3;
+    }
+
+    .faq-q-text {
+        text-align: left;
+        line-height: 1.5;
+    }
+
+    .faq-icon {
+        margin-top: 13px;
     }
 
     .faq-answer {
-        padding: 20px 20px 25px 20px;
+        padding: 0 25px 0 25px;
+    }
+
+    .faq-item.active .faq-answer {
+        padding: 10px 25px 25px 25px;
+    }
+
+    .faq-cta {
+        margin-top: 30px;
+    }
+
+    .faq-cta-title {
+        font-size: 1.4rem;
+        line-height: 1.4;
+    }
+
+    .service-faq-section {
+        padding-bottom: 50px;
+    }
+
+    .faq-cta-desc {
+        font-size: 1rem;
     }
 }

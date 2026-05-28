@@ -94,30 +94,66 @@
     color: var(--text-light);
 }
 
-@media (max-width: 768px) {
+@media (max-width: 991px) {
     .subpage-hero {
         flex-direction: column;
+        align-items: stretch; /* Fix horizontal shrinking */
         padding-top: var(--header-height-sp);
+        padding-bottom: 10px;
     }
 
     .subpage-hero-left,
     .subpage-hero-right {
-        flex: 0 0 100%;
+        flex: none; /* Reset flex-basis which affects height in column mode */
+        width: 100%; /* Force full width */
         max-width: 100%;
     }
 
     .subpage-hero-image {
-        border-radius: 0;
-        height: 250px; /* Smaller height on mobile */
+        border-radius: 0 30px 30px 0;
+        height: 300px;
+        width: 90%; /* Increased inset to clearly show the curve */
     }
 
     .subpage-hero-right {
         padding-top: 30px;
+        overflow: hidden; /* Prevent horizontal scroll from 100vw */
     }
     
-    .subpage-hero-en,
-    .subpage-hero-title,
+    .subpage-hero-en {
+        padding-left: 25px; /* Align with left edge of the pill */
+        font-size: 1rem;
+    }
+
+    .subpage-hero-bg {
+        padding: 12px 0; /* Make pill less tall */
+        margin-bottom: 20px;
+    }
+
+    .subpage-hero-bg::before {
+        left: 25px; /* Align pill start */
+        width: calc(100vw - 25px);
+        border-radius: 30px 0 0 30px / 60px 0 0 60px; /* Vertically elongated elliptical curve */
+    }
+
+    .subpage-hero-title {
+        padding-left: 55px; /* Text aligned inside the pill */
+        font-size: 1.8rem;
+    }
+
     .subpage-breadcrumb {
-        padding-left: 5%;
+        padding-left: 25px; /* Align with left edge of the pill */
+    }
+}
+
+@media (max-width: 768px) {
+    .subpage-hero-image {
+        border-radius: 0 24px 24px 0;
+        height: 220px;
+        width: 92%;
+    }
+
+    .subpage-hero-title {
+        font-size: 1.5rem;
     }
 }

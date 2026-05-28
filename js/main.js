@@ -62,6 +62,7 @@ document.addEventListener('DOMContentLoaded', () => {
         initHeroSlider();
         initScrollToTop();
         initFAQ();
+        initCVSlider();
     });
 
     // FAQ Accordion Logic
@@ -98,20 +99,7 @@ document.addEventListener('DOMContentLoaded', () => {
             menuToggle.addEventListener('click', () => {
                 const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
                 menuToggle.setAttribute('aria-expanded', !isExpanded);
-                
-                // Toggle nav visibility (Basic implementation for now)
-                if (!isExpanded) {
-                    desktopNav.style.display = 'block';
-                    desktopNav.style.position = 'absolute';
-                    desktopNav.style.top = '100%';
-                    desktopNav.style.left = '0';
-                    desktopNav.style.width = '100%';
-                    desktopNav.style.backgroundColor = '#fff';
-                    desktopNav.style.padding = '20px';
-                    desktopNav.style.boxShadow = '0 10px 10px rgba(0,0,0,0.1)';
-                } else {
-                    desktopNav.style.display = ''; // Reset
-                }
+                document.body.classList.toggle('menu-open', !isExpanded);
             });
         }
     }
@@ -127,5 +115,30 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
             });
         }
+    }
+
+    // Customer Voice Slider Logic
+    function initCVSlider() {
+        const grid = document.querySelector('.cv-grid');
+        const prevBtn = document.querySelector('.cv-arrow.prev');
+        const nextBtn = document.querySelector('.cv-arrow.next');
+        const cards = document.querySelectorAll('.cv-card');
+        
+        if (!grid || !prevBtn || !nextBtn || cards.length === 0) return;
+
+        nextBtn.addEventListener('click', () => {
+            // Get the width of one card plus its margin/gap
+            const cardStyle = window.getComputedStyle(cards[0]);
+            const cardWidth = cards[0].offsetWidth + parseInt(cardStyle.marginRight) || parseInt(window.getComputedStyle(grid).gap) || 30;
+            
+            grid.scrollBy({ left: cardWidth, behavior: 'smooth' });
+        });
+
+        prevBtn.addEventListener('click', () => {
+            const cardStyle = window.getComputedStyle(cards[0]);
+            const cardWidth = cards[0].offsetWidth + parseInt(cardStyle.marginRight) || parseInt(window.getComputedStyle(grid).gap) || 30;
+            
+            grid.scrollBy({ left: -cardWidth, behavior: 'smooth' });
+        });
     }
 });

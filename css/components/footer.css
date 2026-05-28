@@ -25,16 +25,27 @@
     background-color: var(--primary-color);
     border-radius: 20px;
     display: flex;
-    align-items: center;
+    align-items: stretch;
     justify-content: space-between;
-    padding: 25px 40px;
+    padding: 0;
     color: var(--white);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
 }
 
 .cta-left {
     flex: 1.2;
     text-align: center;
+    padding: 25px 20px 25px 40px;
+    transition: background-color 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.cta-left:hover {
+    background-color: #4FDEDA;
+    cursor: pointer;
 }
 
 .cta-left p {
@@ -47,16 +58,26 @@
     width: 1px;
     height: 70px;
     background-color: #FFFFFF;
+    align-self: center;
 }
 
 .cta-middle {
     flex: 2;
     text-align: center;
-    padding: 0 30px;
+    padding: 25px 30px;
+    transition: background-color 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.cta-middle:hover {
+    background-color: #4FDEDA;
+    cursor: pointer;
 }
 
 .cta-label {
-    font-size: 0.85rem;
+    font-size: 16px;
     margin-bottom: 5px;
     font-weight: 500;
 }
@@ -94,17 +115,28 @@
 .cta-right {
     flex: 1.5;
     text-align: center;
-    padding-left: 20px;
+    padding: 25px 40px 25px 20px;
+    transition: background-color 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.cta-right:hover {
+    background-color: #4FDEDA;
+    cursor: pointer;
 }
 
 .cta-btn-link {
     display: inline-flex;
     align-items: center;
+    justify-content: center;
     gap: 15px;
     color: var(--white);
     font-weight: 500;
-    font-size: 0.95rem;
+    font-size: 14px;
     margin-top: 10px;
+    width: 100%;
 }
 
 .cta-line {
@@ -172,6 +204,13 @@
     margin-left: 15px;
     margin-bottom: -3px;
     align-self: flex-end;
+    transition: all 0.3s ease;
+}
+
+.btn-google-map:hover {
+    background-color: var(--primary-color);
+    color: var(--white);
+    border-color: var(--primary-color);
 }
 
 .footer-logo {
@@ -293,28 +332,168 @@
 
 /* Responsive */
 @media (max-width: 991px) {
+    .site-footer {
+        margin-top: 180px;
+        padding-top: 180px;
+    }
+
     .footer-cta-wrapper {
         padding: 0 20px;
     }
 
     .footer-cta {
         flex-direction: column;
-        padding: 30px 20px;
-        gap: 20px;
+        padding: 0;
+        gap: 0;
+    }
+
+    .cta-left {
+        width: 100%;
+        padding: 30px 20px 20px 20px;
+    }
+
+    .cta-middle {
+        width: 100%;
+        padding: 20px 20px;
+    }
+
+    .cta-right {
+        width: 100%;
+        padding: 20px 20px 30px 20px;
     }
 
     .cta-divider {
-        width: 100%;
+        width: calc(100% - 40px);
+        margin: 0 auto;
         height: 1px;
     }
 
     .footer-grid {
-        flex-direction: column;
-        gap: 40px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 30px 15px; /* Reduced column gap to give more width to text */
+    }
+
+    .footer-left {
+        display: contents;
+    }
+
+    .footer-company-name {
+        grid-column: 1 / -1;
+        order: 1;
+        margin-bottom: 0;
+    }
+
+    .footer-address-container {
+        grid-column: 1 / -1;
+        order: 2;
+    }
+
+    .footer-center {
+        grid-column: 1 / 2;
+        order: 3;
+    }
+
+    .footer-right {
+        grid-column: 2 / -1;
+        order: 4;
+    }
+
+    .footer-logo {
+        grid-column: 1 / -1;
+        order: 5;
+        margin-top: 20px;
+    }
+
+    .footer-links a {
+        display: block;
+        padding: 5px 0; /* Reduced vertical padding */
     }
 
     .site-footer-bottom-container {
         flex-direction: column;
+        align-items: flex-start;
+        gap: 40px;
+        position: relative;
+    }
+
+    .footer-copyright {
+        align-self: center;
+        margin-top: 20px;
+    }
+
+    .footer-action-top {
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
+
+    .footer-external-links svg {
+        width: 32px;
+        height: 32px;
+    }
+
+    .cta-phone-wrap {
+        flex-direction: column;
+        align-items: center;
+        gap: 5px;
+    }
+}
+
+@media (max-width: 768px) {
+    .footer-address-container {
+        flex-direction: column;
+        align-items: flex-start;
         gap: 20px;
+    }
+    .btn-google-map {
+        margin-left: 0;
+        align-self: flex-start;
+    }
+    .footer-center, .footer-right {
+        gap: 20px; /* Reduced gap between groups */
+    }
+    .footer-heading {
+        font-size: 0.95rem;
+        margin-bottom: 12px;
+    }
+    .footer-links {
+        gap: 8px; /* Tighter spacing between links */
+    }
+    .footer-links a {
+        font-size: 0.85rem; /* Slightly increased font size */
+        letter-spacing: -0.03em; /* Keep it tight so it fits on one line */
+    }
+    .cta-phone {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .footer-cta-wrapper {
+        padding: 0 15px;
+    }
+    .footer-cta {
+        padding: 0;
+    }
+    .cta-left {
+        padding: 25px 15px 20px 15px;
+    }
+    .cta-middle {
+        padding: 20px 15px;
+    }
+    .cta-right {
+        padding: 20px 15px 25px 15px;
+    }
+    .cta-divider {
+        width: calc(100% - 30px);
+        margin: 0 auto;
+    }
+    .cta-left p {
+        font-size: 0.95rem;
+    }
+    .footer-external-links {
+        flex-wrap: wrap;
+        justify-content: center;
     }
 }

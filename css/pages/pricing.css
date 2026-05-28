@@ -138,6 +138,10 @@ img[src="images/pricing-features.jpg"] {
     background-color: #F7F7F7;
 }
 
+.highlight-row td:first-child {
+    font-weight: bold;
+}
+
 .strike {
     position: relative;
     display: inline-block;
@@ -178,10 +182,12 @@ img[src="images/pricing-features.jpg"] {
 }
 
 .startup-plan-notes p {
-    font-size: 0.85rem;
+    font-size: 0.95rem;
     color: var(--text-light);
     margin-bottom: 8px;
     line-height: 1.6;
+    padding-left: 1.3em;
+    text-indent: -1.3em;
 }
 
 @media (max-width: 768px) {
@@ -189,15 +195,33 @@ img[src="images/pricing-features.jpg"] {
         padding: 30px 20px;
     }
 
-    .startup-price-table td,
-    .startup-service-table td {
-        padding: 10px;
+    .startup-plan-notes p {
         font-size: 0.85rem;
     }
 
+    .startup-price-table th,
+    .startup-service-table th,
+    .startup-price-table td,
+    .startup-service-table td {
+        padding: 10px 8px;
+        font-size: 0.85rem;
+    }
+
+    .startup-price-table th:first-child,
+    .startup-service-table th:first-child,
     .startup-price-table td:first-child,
     .startup-service-table td:first-child {
         padding-left: 10px;
+    }
+
+    .startup-service-table th:first-child,
+    .startup-service-table td:first-child {
+        width: 75%;
+    }
+
+    .startup-service-table th:last-child,
+    .startup-service-table td:last-child {
+        width: 25%;
     }
 }
 
@@ -369,15 +393,25 @@ img[src="images/pricing-features.jpg"] {
 }
 
 .pricing-example-notes p {
-    font-size: 0.85rem;
+    font-size: 0.95rem;
     color: var(--text-light);
     margin-bottom: 8px;
     line-height: 1.6;
+    padding-left: 1.3em;
+    text-indent: -1.3em;
 }
 
 @media (max-width: 768px) {
+    .pricing-example-section {
+        margin-bottom: 0;
+    }
+
     .pricing-example-body {
         padding: 20px;
+    }
+
+    .pricing-example-notes p {
+        font-size: 0.85rem;
     }
 
     .pricing-example-monthly-box {
