@@ -111,7 +111,7 @@
                         月額顧問料は、売上規模とプランの組み合わせによって決まります。まずは目安としてご確認ください。
                     </p>
 
-                    <div class="pricing-table-wrapper">
+                    <div class="pricing-table-wrapper desktop-pricing-table">
                         <table class="plans-pricing-table">
                             <thead>
                                 <tr>
@@ -171,6 +171,61 @@
                                     <td>別途お見積り</td>
                                     <td class="recommended">別途お見積り</td>
                                     <td>別途お見積り</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Mobile Pricing Table (Hidden on Desktop) -->
+                    <div class="mobile-pricing-container">
+                        <div class="mobile-plan-selector-box">
+                            <div class="mobile-plan-label">プラン選択</div>
+                            <div class="custom-select-wrapper" id="mobile-plan-custom-select">
+                                <div class="custom-select-trigger">
+                                    <span class="custom-select-text">
+                                        スタンダードプラン <span class="custom-select-badge">おすすめ</span>
+                                    </span>
+                                    <span class="custom-select-arrow"></span>
+                                </div>
+                                <ul class="custom-select-options">
+                                    <li data-value="simple">超シンプルプラン</li>
+                                    <li data-value="essential">エッセンシャルプラン</li>
+                                    <li data-value="standard" class="selected">スタンダードプラン <span class="custom-select-badge">おすすめ</span></li>
+                                    <li data-value="advisory">アドバイザリープラン</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <table class="mobile-pricing-table">
+                            <thead>
+                                <tr>
+                                    <th class="col-scale">売上規模</th>
+                                    <th class="col-price">プラン料金 [月額]</th>
+                                </tr>
+                            </thead>
+                            <tbody id="mobile-pricing-tbody">
+                                <tr>
+                                    <td class="col-scale">〜2,000万円</td>
+                                    <td class="price-val">20,000円〜</td>
+                                </tr>
+                                <tr>
+                                    <td class="col-scale">〜3,000万円</td>
+                                    <td class="price-val">30,000円〜</td>
+                                </tr>
+                                <tr>
+                                    <td class="col-scale">〜5,000万円</td>
+                                    <td class="price-val">40,000円〜</td>
+                                </tr>
+                                <tr>
+                                    <td class="col-scale">〜8,000万円</td>
+                                    <td class="price-val">50,000円〜</td>
+                                </tr>
+                                <tr>
+                                    <td class="col-scale">〜1億円</td>
+                                    <td class="price-val">60,000円〜</td>
+                                </tr>
+                                <tr>
+                                    <td class="col-scale">1億円超</td>
+                                    <td class="price-val">別途お見積り</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -670,5 +725,52 @@
 
     <div id="footer-placeholder"></div>
     <script src="js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const customSelect = document.getElementById('mobile-plan-custom-select');
+            if (customSelect) {
+                const trigger = customSelect.querySelector('.custom-select-trigger');
+                const triggerText = customSelect.querySelector('.custom-select-text');
+                const options = customSelect.querySelectorAll('.custom-select-options li');
+                const tbody = document.getElementById('mobile-pricing-tbody');
+
+                const pricingData = {
+                    'simple': ['10,000円〜', '20,000円〜', '30,000円〜', '40,000円〜', '50,000円〜', '別途お見積り'],
+                    'essential': ['15,000円〜', '25,000円〜', '35,000円〜', '45,000円〜', '55,000円〜', '別途お見積り'],
+                    'standard': ['20,000円〜', '30,000円〜', '40,000円〜', '50,000円〜', '60,000円〜', '別途お見積り'],
+                    'advisory': ['25,000円〜', '35,000円〜', '45,000円〜', '55,000円〜', '65,000円〜', '別途お見積り']
+                };
+
+                trigger.addEventListener('click', () => {
+                    customSelect.classList.toggle('open');
+                });
+
+                options.forEach(option => {
+                    option.addEventListener('click', () => {
+                        options.forEach(opt => opt.classList.remove('selected'));
+                        option.classList.add('selected');
+                        triggerText.innerHTML = option.innerHTML;
+                        customSelect.classList.remove('open');
+                        
+                        const val = option.getAttribute('data-value');
+                        const prices = pricingData[val];
+                        const priceCells = tbody.querySelectorAll('.price-val');
+                        
+                        prices.forEach((price, index) => {
+                            if(priceCells[index]) {
+                                priceCells[index].textContent = price;
+                            }
+                        });
+                    });
+                });
+
+                document.addEventListener('click', (e) => {
+                    if (!customSelect.contains(e.target)) {
+                        customSelect.classList.remove('open');
+                    }
+                });
+            }
+        });
+    </script>
 </body>
 </html>
