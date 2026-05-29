@@ -13,15 +13,102 @@
 }
 
 .staff-card {
+    border-radius: 8px;
+    text-align: center;
+    position: relative;
+    perspective: 1000px;
+}
+
+.staff-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.6s cubic-bezier(0.4, 0.2, 0.2, 1);
+    transform-style: preserve-3d;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+.staff-card.flipped .staff-card-inner {
+    transform: rotateY(180deg);
+}
+
+.staff-card-front, .staff-card-back {
+    backface-visibility: hidden;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.staff-card-front {
     background: #fff;
     border: 1px solid #F0F0F0;
     border-radius: 8px;
     padding: 24px 20px 20px;
     position: relative;
+    width: 100%;
+    height: 100%;
     box-shadow: 0px 0px 6px 0px #00000026;
     display: flex;
     flex-direction: column;
     align-items: center;
+    z-index: 2;
+    transform: rotateY(0deg);
+}
+
+.staff-card-back {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transform: rotateY(180deg);
+    padding: 16px;
+    color: #fff;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* Shrink text/spacing specifically for the back of the card so it fits */
+.staff-card-back .staff-modal-section { margin-bottom: 12px; }
+.staff-card-back .staff-modal-section:last-child { margin-bottom: 0; }
+.staff-card-back .staff-modal-label { padding: 2px 8px; font-size: 0.65rem; margin-bottom: 4px; }
+.staff-card-back .staff-modal-text { font-size: 0.7rem; line-height: 1.4; }
+
+/* Name and Department Footer on back of card */
+.staff-card-back-footer {
+    margin-top: 10px;
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
+    padding-top: 10px;
+    text-align: left;
+}
+.staff-card-back-name {
+    margin: 0;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+.staff-card-back-dept {
+    margin: 2px 0 0;
+    font-size: 0.65rem;
+    opacity: 0.9;
+}
+
+/* Dynamic Flip Themes */
+.staff-card-back.theme-cyan { background-color: #0ABAB5; }
+.staff-card-back.theme-cyan .staff-modal-label { color: #0ABAB5; }
+
+.staff-card-back.theme-blue { background-color: #50BAF7; }
+.staff-card-back.theme-blue .staff-modal-label { color: #50BAF7; }
+
+.staff-card-back.theme-orange { background-color: #EF5407; }
+.staff-card-back.theme-orange .staff-modal-label { color: #EF5407; }
+
+.staff-card-inner:hover {
+    transform: translateY(-5px);
+}
+.staff-card.flipped .staff-card-inner:hover {
+    transform: rotateY(180deg) translateY(-5px);
 }
 
 .staff-card-header {
@@ -29,7 +116,30 @@
     margin-bottom: 16px;
     display: flex;
     justify-content: center;
-    min-height: 22px; /* To maintain height even if empty */
+}
+
+/* Specific Accent for Sasaki */
+.staff-card-accent {
+    position: absolute;
+    bottom: -1px;
+    right: -1px;
+    width: 47px;
+    height: 20px;
+    border-bottom-right-radius: 8px;
+    overflow: hidden;
+    z-index: 5;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.staff-card:not(.flipped) .staff-card-inner:hover .staff-card-accent {
+    opacity: 1;
+}
+
+.staff-card-accent svg {
+    width: 100%;
+    height: 100%;
+    display: block;
 }
 
 .staff-department {
@@ -83,7 +193,6 @@
 .staff-card-body {
     width: 100%;
     text-align: left;
-    margin-top: auto; /* Pushes text to the bottom if image sizes vary, but flex layout is standard */
 }
 
 .staff-name {
@@ -100,21 +209,149 @@
     line-height: 1.4;
 }
 
-/* Specific Accent for Sasaki */
-.staff-card-accent {
-    position: absolute;
-    bottom: -1px;
-    right: -1px;
-    width: 32px;
-    height: 32px;
-    border-bottom-right-radius: 8px;
-    overflow: hidden;
+/* =========================================
+   PAGINATION STYLES (Match voice/news)
+   ========================================= */
+.mobile-only-pagination {
+    display: none;
 }
 
-.staff-card-accent svg {
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    margin-top: 60px;
+}
+
+.page-link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 32px;
+    height: 32px;
+    border: 1px solid var(--primary-color);
+    border-radius: 4px;
+    color: var(--primary-color);
+    font-size: var(--font-sm);
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    background-color: var(--white);
+}
+
+.page-link.active,
+.page-link:hover {
+    background-color: var(--primary-color);
+    color: var(--white);
+}
+
+.page-link.next {
+    padding: 0;
+}
+
+.page-link.next:hover {
+    background-color: var(--primary-color);
+    color: var(--white);
+}
+
+/* =========================================
+   MODAL STYLES
+   ========================================= */
+.staff-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
-    display: block;
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.6);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.staff-modal.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.staff-modal-content {
+    position: relative;
+    width: 100%;
+    max-width: 380px;
+    border-radius: 8px;
+    padding: 40px 24px 30px;
+    color: #fff;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    background-color: #0ABAB5; /* Default */
+    transition: background-color 0.3s ease;
+}
+
+/* Dynamic Themes */
+.staff-modal.theme-cyan .staff-modal-content { background-color: #0ABAB5; }
+.staff-modal.theme-cyan .staff-modal-label { color: #0ABAB5; }
+
+.staff-modal.theme-blue .staff-modal-content { background-color: #50BAF7; }
+.staff-modal.theme-blue .staff-modal-label { color: #50BAF7; }
+
+.staff-modal.theme-orange .staff-modal-content { background-color: #EF5407; }
+.staff-modal.theme-orange .staff-modal-label { color: #EF5407; }
+
+/* Modal Inner */
+.staff-modal-close {
+    position: absolute;
+    top: 12px;
+    right: 16px;
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 28px;
+    cursor: pointer;
+    line-height: 1;
+}
+
+.staff-modal-section {
+    margin-bottom: 24px;
+}
+
+.staff-modal-label {
+    display: inline-block;
+    background-color: #fff;
+    padding: 4px 16px;
+    font-weight: bold;
+    font-size: 0.95rem;
+    margin-bottom: 12px;
+}
+
+.staff-modal-text {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin: 0;
+}
+
+.staff-modal-footer {
+    text-align: right;
+    margin-top: 30px;
+}
+
+.staff-modal-name {
+    font-size: 1.8rem;
+    margin-bottom: 4px;
+    font-weight: 500;
+}
+
+.staff-modal-dept {
+    font-size: 0.85rem;
+    margin: 0;
+}
+
+.hidden-by-pagination {
+    display: none !important;
 }
 
 /* Responsive adjustments */
@@ -125,14 +362,97 @@
 }
 
 @media (max-width: 768px) {
-    .staff-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 20px;
+    /* Reveal pagination on mobile */
+    .mobile-only-pagination {
+        display: flex !important;
     }
-}
 
-@media (max-width: 480px) {
     .staff-grid {
         grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .staff-card-inner {
+        box-shadow: none; /* Shadow applies to front instead */
+    }
+
+    .staff-card-front {
+        display: grid;
+        grid-template-columns: 110px 1fr;
+        grid-template-rows: auto auto;
+        column-gap: 20px;
+        row-gap: 16px;
+        padding: 20px 16px;
+        align-items: start;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    }
+
+    .staff-card-back {
+        display: none !important;
+    }
+
+    /* Hide the desktop corner accent */
+    .staff-card-accent { display: none !important; }
+
+    /* Create the new mobile accent triangle */
+    .staff-card-front::after {
+        content: '';
+        position: absolute;
+        bottom: -1px;
+        right: -1px;
+        width: 56px;
+        height: 56px;
+        background-color: #0ABAB5;
+        clip-path: polygon(100% 0, 0 100%, 100% 100%);
+        z-index: 10;
+        border-bottom-right-radius: 8px;
+    }
+
+    /* Create the inner circle with white border */
+    .staff-card-front::before {
+        content: '';
+        position: absolute;
+        bottom: 8px;
+        right: 8px;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background-color: rgba(255, 255, 255, 0.4);
+        border: 1.5px solid #ffffff;
+        z-index: 11;
+    }
+
+    .staff-card-header {
+        grid-column: 2 / 3;
+        grid-row: 1 / 2;
+        margin-bottom: 0;
+        min-height: auto;
+    }
+
+    .staff-card-image {
+        grid-column: 1 / 2;
+        grid-row: 1 / 3;
+        margin-bottom: 0;
+        width: 110px;
+        height: 110px;
+    }
+
+    .staff-card-body {
+        grid-column: 2 / 3;
+        grid-row: 2 / 3;
+        margin-top: 0;
+    }
+
+    .staff-department {
+        padding: 4px 0;
+    }
+
+    .staff-name {
+        font-size: 1.25rem;
+        margin-bottom: 4px;
+    }
+
+    .staff-title {
+        font-size: 0.75rem;
     }
 }

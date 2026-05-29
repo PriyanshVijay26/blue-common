@@ -63,6 +63,8 @@ document.addEventListener('DOMContentLoaded', () => {
         initScrollToTop();
         initFAQ();
         initCVSlider();
+        initStaffMobilePagination();
+        initStaffModal();
     });
 
     // FAQ Accordion Logic
@@ -140,5 +142,209 @@ document.addEventListener('DOMContentLoaded', () => {
             
             grid.scrollBy({ left: -cardWidth, behavior: 'smooth' });
         });
+    }
+
+    // Staff Page Mobile Pagination Logic
+    function initStaffMobilePagination() {
+        const staffGrid = document.querySelector('.staff-grid');
+        const paginationBlock = document.querySelector('.mobile-only-pagination');
+        if (!staffGrid || !paginationBlock) return;
+
+        const cards = Array.from(staffGrid.querySelectorAll('.staff-card'));
+        const pageLinks = paginationBlock.querySelectorAll('.page-link:not(.next)');
+        const nextBtn = paginationBlock.querySelector('.page-link.next');
+        
+        const itemsPerPage = 10;
+        let currentPage = 1;
+        const totalPages = Math.ceil(cards.length / itemsPerPage);
+
+        function updatePagination() {
+            if (window.innerWidth > 768) {
+                // Desktop: show all cards
+                cards.forEach(card => card.classList.remove('hidden-by-pagination'));
+                return;
+            }
+
+            // Mobile: handle pagination display
+            const startIndex = (currentPage - 1) * itemsPerPage;
+            const endIndex = startIndex + itemsPerPage;
+            
+            cards.forEach((card, index) => {
+                if (index >= startIndex && index < endIndex) {
+                    card.classList.remove('hidden-by-pagination');
+                } else {
+                    card.classList.add('hidden-by-pagination');
+                }
+            });
+
+            // Update active state on pagination links
+            pageLinks.forEach((link, index) => {
+                if (index + 1 === currentPage) {
+                    link.classList.add('active');
+                } else {
+                    link.classList.remove('active');
+                }
+            });
+        }
+
+        // Add event listeners to page numbers
+        pageLinks.forEach((link, index) => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                currentPage = index + 1;
+                updatePagination();
+                // Scroll to top of grid smoothly so user sees the new cards
+                const offset = staffGrid.getBoundingClientRect().top + window.scrollY - 100;
+                window.scrollTo({ top: offset, behavior: 'smooth' });
+            });
+        });
+
+        // Add event listener to Next button
+        if (nextBtn) {
+            nextBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                if (currentPage < totalPages) {
+                    currentPage++;
+                    updatePagination();
+                    const offset = staffGrid.getBoundingClientRect().top + window.scrollY - 100;
+                    window.scrollTo({ top: offset, behavior: 'smooth' });
+                }
+            });
+        }
+
+        // Initial setup and window resize listener
+        updatePagination();
+        window.addEventListener('resize', updatePagination);
+    }
+
+    // Staff Page 3D Flip & Modal Logic
+    function initStaffModal() {
+        const staffGrid = document.querySelector('.staff-grid');
+        const modal = document.getElementById('staff-modal');
+        if (!staffGrid) return;
+        
+        let cards = Array.from(staffGrid.querySelectorAll('.staff-card'));
+        if (cards.length === 0) return;
+
+        const modalClose = document.getElementById('staff-modal-close');
+        const modalName = document.getElementById('staff-modal-name');
+        const modalDept = document.getElementById('staff-modal-dept');
+
+        // Restructure cards for 3D flip
+        cards.forEach(card => {
+            // Check if already restructured to avoid double wrap
+            if (card.querySelector('.staff-card-inner')) return;
+
+            const nameEl = card.querySelector('.staff-name');
+            const deptEl = card.querySelector('.staff-department');
+            const nameStr = nameEl ? nameEl.textContent.trim() : '';
+            const deptStr = deptEl ? deptEl.textContent.trim() : '';
+            
+            let themeClass = 'theme-cyan';
+            let leafColor = '#0ABAB5';
+            if (deptEl) {
+                if (deptEl.classList.contains('tag-blue')) {
+                    themeClass = 'theme-blue';
+                    leafColor = '#50BAF7';
+                }
+                if (deptEl.classList.contains('tag-orange')) {
+                    themeClass = 'theme-orange';
+                    leafColor = '#EF5407';
+                }
+            }
+
+            const existingAccent = card.querySelector('.staff-card-accent');
+            if (existingAccent) existingAccent.remove();
+
+            const frontContent = card.innerHTML;
+            card.innerHTML = ''; // clear original contents
+
+            const inner = document.createElement('div');
+            inner.className = 'staff-card-inner';
+
+            const front = document.createElement('div');
+            front.className = 'staff-card-front';
+            front.innerHTML = frontContent;
+            
+            const accent = document.createElement('div');
+            accent.className = 'staff-card-accent';
+            accent.innerHTML = `<svg width="100%" height="100%" viewBox="0 0 47 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M24.5 4.56153C23.105 12.9314 8.66667 17.7283 0 19.5616C24.5 16.5615 27.5 19.5616 45.5 11.0615C49.1451 9.34019 36.5001 13.0615 31 5.56153C28.4334 2.06163 26 -4.43844 24.5 4.56153Z" fill="${leafColor}"/>
+</svg>`;
+            front.appendChild(accent);
+
+            const back = document.createElement('div');
+            back.className = `staff-card-back ${themeClass}`;
+            back.innerHTML = `
+                <div class="staff-card-back-content">
+                    <div class="staff-modal-section">
+                        <span class="staff-modal-label">趣味</span>
+                        <p class="staff-modal-text">筋トレ・脱出ゲーム・推しのゲーム実況を観ること〇〇〇〇〇〇〇〇〇</p>
+                    </div>
+                    <div class="staff-modal-section">
+                        <span class="staff-modal-label">最近の悩み</span>
+                        <p class="staff-modal-text">健康情報を収集してすぐ実行するが、常に新しい情報に上書きされるので、過去の情報は覚えていないこと。</p>
+                    </div>
+                    <div class="staff-modal-section">
+                        <span class="staff-modal-label">メッセージ</span>
+                        <p class="staff-modal-text">「報告」「連絡」をこまめに行い、安心してお仕事をお任せいただけるよう心がけております。〇〇〇〇〇〇</p>
+                    </div>
+                </div>
+                <div class="staff-card-back-footer">
+                    <h4 class="staff-card-back-name">${nameStr}</h4>
+                    <p class="staff-card-back-dept">${deptStr}</p>
+                </div>
+            `;
+
+            inner.appendChild(front);
+            inner.appendChild(back);
+            card.appendChild(inner);
+            
+            // Add pointer cursor
+            card.style.cursor = 'pointer';
+
+            card.addEventListener('click', () => {
+                const updatedNameEl = card.querySelector('.staff-name');
+                const updatedDeptEl = card.querySelector('.staff-department');
+
+                if (window.innerWidth > 768) {
+                    // Desktop: Flip the card
+                    cards.forEach(c => {
+                        if (c !== card) c.classList.remove('flipped');
+                    });
+                    card.classList.toggle('flipped');
+                } else {
+                    // Mobile: Open Modal
+                    if (modal) {
+                        if (updatedNameEl) modalName.textContent = updatedNameEl.textContent;
+                        if (updatedDeptEl) modalDept.textContent = updatedDeptEl.textContent;
+
+                        modal.classList.remove('theme-cyan', 'theme-blue', 'theme-orange');
+                        modal.classList.add(themeClass);
+
+                        modal.classList.add('active');
+                        document.body.style.overflow = 'hidden';
+                    }
+                }
+            });
+        });
+
+        // Close button logic
+        if (modalClose) {
+            modalClose.addEventListener('click', () => {
+                modal.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+        }
+
+        // Close on background click
+        if (modal) {
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    modal.classList.remove('active');
+                    document.body.style.overflow = '';
+                }
+            });
+        }
     }
 });

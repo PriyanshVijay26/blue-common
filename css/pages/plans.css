@@ -263,7 +263,7 @@
 }
 
 .pricing-notes {
-    font-size: 0.85rem;
+    font-size: 0.9rem;
     color: #555555;
     line-height: 1.8;
 }
@@ -538,12 +538,17 @@
     background-color: #EEF8F8;
 }
 
+.services-included-table td:has(.hyphen-mark) {
+    background-color: #FFFFFF;
+}
+
 .services-included-table td.col-service-name {
     background-color: #F7F7F7;
     text-align: left;
     padding-left: 20px;
     font-weight: normal;
     color: var(--text-color);
+    white-space: nowrap;
 }
 
 .services-included-table th.col-service-name {
@@ -570,6 +575,46 @@
 /* =========================================
    SIMPLE PRICING TABLES (各種申告料金, オプションなど)
    ========================================= */
+
+@media (max-width: 768px) {
+    .services-included-table {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        min-width: 0;
+        border-top: 1px solid #D9D9D9;
+        border-left: 1px solid #D9D9D9;
+    }
+    .services-included-table thead,
+    .services-included-table tbody,
+    .services-included-table tr {
+        display: contents;
+    }
+    .services-included-table th.col-service-name,
+    .services-included-table td.col-service-name {
+        grid-column: 1 / -1;
+        width: 100%;
+        text-align: center;
+        white-space: normal;
+    }
+    .services-included-table th, 
+    .services-included-table td {
+        border: none;
+        border-bottom: 1px solid #D9D9D9;
+        border-right: 1px solid #D9D9D9;
+        box-sizing: border-box;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 10px 5px;
+    }
+    .services-included-table th {
+        border-bottom: 1px solid white;
+        border-right: 1px solid white;
+    }
+    .services-included-table th:not(.col-service-name) {
+        font-size: 0.75rem;
+    }
+}
 
 .simple-pricing-section {
     margin-top: 60px;
@@ -614,12 +659,22 @@
     font-weight: bold;
     font-size: 0.95rem;
     border: 1px solid white;
+    border-top: 1px solid #8F8F8F;
+    border-bottom: 1px solid #8F8F8F;
+}
+
+.simple-pricing-table th:first-child {
+    width: 18%;
+}
+
+.simple-pricing-section .simple-pricing-table-wrapper:nth-of-type(2) .simple-pricing-table {
+    table-layout: fixed;
 }
 
 .simple-pricing-table td {
     font-size: 0.95rem;
     color: var(--text-color);
-    background-color: #FFFFFF;
+    background-color: #F7F7F7;
 }
 
 .simple-pricing-table td:first-child {
@@ -633,6 +688,77 @@
     padding-left: 10px;
 }
 
+@media (max-width: 768px) {
+    .simple-pricing-table-wrapper {
+        overflow-x: hidden;
+    }
+    .simple-pricing-table:not(.alternate-rows) {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        min-width: 0;
+        border: none;
+        border-top: 1px solid #8F8F8F;
+        border-left: 1px solid #D9D9D9;
+    }
+    .simple-pricing-table:not(.alternate-rows) thead {
+        display: flex;
+        flex: 1.2;
+    }
+    .simple-pricing-table:not(.alternate-rows) tbody {
+        display: flex;
+        flex-direction: row;
+        flex: 2;
+    }
+    .simple-pricing-table:not(.alternate-rows) tr {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+    .simple-pricing-table:not(.alternate-rows) tbody tr {
+        flex: 1;
+    }
+    .simple-pricing-table:not(.alternate-rows) th, 
+    .simple-pricing-table:not(.alternate-rows) td {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        height: 60px;
+        padding: 5px;
+        box-sizing: border-box;
+        border: none;
+        border-bottom: 1px solid #D9D9D9;
+        border-right: 1px solid #D9D9D9;
+        font-size: 0.85rem;
+        width: 100%;
+    }
+    .simple-pricing-table:not(.alternate-rows) th {
+        border-bottom: 1px solid white;
+        border-right: 1px solid white;
+        padding-left: 5px;
+    }
+    .simple-pricing-table:not(.alternate-rows) th:first-child,
+    .simple-pricing-table:not(.alternate-rows) td:first-child {
+        width: 100%;
+        border-bottom: 1px solid #8F8F8F;
+    }
+    .simple-pricing-table:not(.alternate-rows) td:first-child {
+        padding-left: 5px;
+        background-color: #F7F7F7;
+    }
+
+    .simple-pricing-table.alternate-rows {
+        min-width: 0;
+        width: 100%;
+    }
+    .simple-pricing-table.alternate-rows th,
+    .simple-pricing-table.alternate-rows td {
+        padding: 12px 10px;
+        font-size: 0.85rem;
+    }
+}
+
 .simple-pricing-table.alternate-rows tbody tr:nth-child(odd) td {
     background-color: #F7F7F7;
 }
@@ -644,6 +770,12 @@
 /* =========================================
    PRICE SIMULATION (料金シミュレーション)
    ========================================= */
+
+.simulation-section-bg {
+    margin: 0 calc(50% - 50vw);
+    padding: 100px calc(50vw - 50%) 60px;
+    background-color: #F7F7F7;
+}
 
 .simulation-cases-wrapper {
     display: flex;
@@ -806,12 +938,34 @@
         gap: 15px;
     }
     .monthly-box-right {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        grid-template-areas: 
+            "label amount"
+            ". annual";
+        align-items: baseline;
         text-align: left;
+    }
+    .monthly-box-price {
+        display: contents;
+    }
+    .price-label {
+        grid-area: label;
+    }
+    .price-amount {
+        grid-area: amount;
+    }
+    .monthly-box-annual {
+        grid-area: annual;
+        padding-right: 0;
     }
     .simulation-total-row {
         flex-direction: column;
-        align-items: flex-start;
+        align-items: stretch;
         gap: 10px;
+    }
+    .total-right {
+        align-self: flex-end;
     }
     .total-left {
         flex-direction: column;
@@ -858,6 +1012,16 @@
     color: var(--text-color);
     font-size: 0.95rem;
     margin: 0;
+}
+
+.sp-br {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .sp-br {
+        display: block;
+    }
 }
 
 .contact-prompt-arrow {
