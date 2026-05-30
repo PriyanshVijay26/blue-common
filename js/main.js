@@ -66,6 +66,8 @@ document.addEventListener('DOMContentLoaded', () => {
         initVoiceRelatedSlider();
         initStaffMobilePagination();
         initStaffModal();
+        initVoiceFilter();
+        initRecruitGallery();
     });
 
     // FAQ Accordion Logic
@@ -129,8 +131,6 @@ document.addEventListener('DOMContentLoaded', () => {
         
         if (!grid || !prevBtn || !nextBtn || cards.length === 0) return;
 
-        let currentIndex = 0;
-
         nextBtn.addEventListener('click', () => {
             if (window.innerWidth <= 991) {
                 const cardStyle = window.getComputedStyle(cards[0]);
@@ -138,10 +138,22 @@ document.addEventListener('DOMContentLoaded', () => {
                 const cardWidth = cards[0].offsetWidth + gap;
                 grid.scrollBy({ left: cardWidth, behavior: 'smooth' });
             } else {
-                if (currentIndex < cards.length - 3) {
-                    currentIndex++;
-                    updateTransform();
-                }
+                if (grid.isAnimating) return;
+                grid.isAnimating = true;
+
+                const firstCard = grid.firstElementChild;
+                const gap = parseInt(window.getComputedStyle(grid).gap) || 0;
+                const cardWidth = firstCard.offsetWidth + gap;
+
+                grid.style.transition = 'transform 0.5s ease';
+                grid.style.transform = `translateX(-${cardWidth}px)`;
+
+                grid.addEventListener('transitionend', function() {
+                    grid.style.transition = 'none';
+                    grid.style.transform = 'translateX(0)';
+                    grid.appendChild(firstCard);
+                    grid.isAnimating = false;
+                }, { once: true });
             }
         });
 
@@ -152,27 +164,34 @@ document.addEventListener('DOMContentLoaded', () => {
                 const cardWidth = cards[0].offsetWidth + gap;
                 grid.scrollBy({ left: -cardWidth, behavior: 'smooth' });
             } else {
-                if (currentIndex > 0) {
-                    currentIndex--;
-                    updateTransform();
-                }
+                if (grid.isAnimating) return;
+                grid.isAnimating = true;
+
+                const lastCard = grid.lastElementChild;
+                const gap = parseInt(window.getComputedStyle(grid).gap) || 0;
+                const cardWidth = lastCard.offsetWidth + gap;
+
+                grid.style.transition = 'none';
+                grid.insertBefore(lastCard, grid.firstElementChild);
+                grid.style.transform = `translateX(-${cardWidth}px)`;
+
+                requestAnimationFrame(() => {
+                    requestAnimationFrame(() => {
+                        grid.style.transition = 'transform 0.5s ease';
+                        grid.style.transform = 'translateX(0)';
+                        
+                        grid.addEventListener('transitionend', function() {
+                            grid.isAnimating = false;
+                        }, { once: true });
+                    });
+                });
             }
         });
-
-        function updateTransform() {
-            const gap = parseInt(window.getComputedStyle(grid).gap) || 0;
-            const cardWidth = cards[0].offsetWidth + gap;
-            grid.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
-            grid.style.transition = 'transform 0.5s ease';
-        }
 
         window.addEventListener('resize', () => {
             if (window.innerWidth <= 991) {
                 grid.style.transform = '';
                 grid.style.transition = '';
-                currentIndex = 0;
-            } else {
-                updateTransform();
             }
         });
     }
@@ -399,5 +418,138 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             });
         }
+    }
+
+    // Voice Page Filter & Pagination Logic
+    function initVoiceFilter() {
+        const tabs = document.querySelectorAll('.voice-section .voice-tab');
+        const cards = Array.from(document.querySelectorAll('.voice-section .voice-card'));
+        const paginationContainer = document.querySelector('.voice-section .pagination');
+        
+        if (tabs.length === 0 || cards.length === 0) return;
+
+        const itemsPerPage = 9;
+        let currentPage = 1;
+        let currentFilter = 'すべて';
+
+        function renderCards() {
+            // Filter cards based on current tag
+            const filteredCards = cards.filter(card => {
+                if (currentFilter === 'すべて') return true;
+                const tags = Array.from(card.querySelectorAll('.voice-card-tag')).map(t => t.textContent.trim());
+                return tags.includes(currentFilter);
+            });
+
+            // Hide all cards first
+            cards.forEach(card => card.style.display = 'none');
+
+            // Calculate pagination
+            const totalPages = Math.ceil(filteredCards.length / itemsPerPage);
+            
+            // Ensure currentPage is valid after filtering
+            if (currentPage > totalPages) currentPage = Math.max(1, totalPages);
+
+            // Show cards for the current page
+            const startIndex = (currentPage - 1) * itemsPerPage;
+            const endIndex = startIndex + itemsPerPage;
+            
+            filteredCards.slice(startIndex, endIndex).forEach(card => {
+                card.style.display = '';
+            });
+
+            if (paginationContainer) {
+                renderPagination(totalPages);
+            }
+        }
+
+        function renderPagination(totalPages) {
+            paginationContainer.innerHTML = '';
+            
+            if (totalPages <= 1) return; // Hide pagination if only 1 page
+
+            for (let i = 1; i <= totalPages; i++) {
+                const link = document.createElement(i === currentPage ? 'span' : 'a');
+                link.className = 'page-link' + (i === currentPage ? ' active' : '');
+                if (i !== currentPage) link.href = '#';
+                link.textContent = i;
+                
+                if (i !== currentPage) {
+                    link.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        currentPage = i;
+                        renderCards();
+                        scrollToTop();
+                    });
+                }
+                paginationContainer.appendChild(link);
+            }
+
+            // Add Next button if not on last page
+            if (currentPage < totalPages) {
+                const nextBtn = document.createElement('a');
+                nextBtn.href = '#';
+                nextBtn.className = 'page-link next';
+                nextBtn.setAttribute('aria-label', 'Next');
+                nextBtn.innerHTML = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>`;
+                
+                nextBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    currentPage++;
+                    renderCards();
+                    scrollToTop();
+                });
+                
+                paginationContainer.appendChild(nextBtn);
+            }
+        }
+
+        function scrollToTop() {
+            const section = document.querySelector('.voice-section');
+            if (section) {
+                const offset = section.getBoundingClientRect().top + window.scrollY - 100;
+                window.scrollTo({ top: offset, behavior: 'smooth' });
+            }
+        }
+
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Update active tab styling
+                tabs.forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+                
+                currentFilter = tab.textContent.trim();
+                currentPage = 1; // Reset to page 1 on filter change
+                renderCards();
+            });
+        });
+
+        // Initial render on load
+        renderCards();
+    }
+
+    // Recruit Gallery Pause Logic
+    function initRecruitGallery() {
+        const grids = document.querySelectorAll('.recruit-gallery-grid');
+        
+        grids.forEach(grid => {
+            const items = grid.querySelectorAll('.recruit-gallery-item img');
+            if (items.length === 0) return;
+
+            items.forEach(img => {
+                img.style.cursor = 'pointer';
+                
+                // Pause on hover
+                img.addEventListener('mouseenter', () => {
+                    grid.classList.add('is-paused');
+                });
+                
+                // Resume when mouse leaves the image
+                img.addEventListener('mouseleave', () => {
+                    grid.classList.remove('is-paused');
+                });
+            });
+        });
     }
 });

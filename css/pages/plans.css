@@ -222,6 +222,7 @@
     border: none;
     background: transparent;
     padding: 0 0 8px 0;
+    box-shadow: none;
 }
 
 .recommended-text {
@@ -236,6 +237,10 @@
     color: var(--text-color);
     font-size: 0.95rem;
     width: 20%;
+    /* Apply the exact same trick from service.css */
+    border-top: 16px solid transparent;
+    background-clip: padding-box;
+    box-shadow: inset 0 1px 0 #D9D9D9; /* Simulate the top border on the background */
 }
 
 .plans-pricing-table th.col-scale {
@@ -245,6 +250,10 @@
 .plans-pricing-table th.recommended {
     background-color: #0ABAB5;
     color: white;
+    border-top: none;
+    background-clip: border-box;
+    box-shadow: none;
+    font-size: 18px;
 }
 
 .plans-pricing-table td {
@@ -254,7 +263,7 @@
 }
 
 .plans-pricing-table td.col-scale {
-    background-color: #F7F7F7;
+    background-color: #E8F7F6;
     font-weight: bold;
 }
 
@@ -423,6 +432,9 @@
         font-weight: bold;
         font-size: 0.95rem;
         width: 50%;
+        border-top: none;
+        background-clip: border-box;
+        box-shadow: none;
     }
 
     .mobile-pricing-table td {

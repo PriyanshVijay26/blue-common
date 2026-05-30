@@ -360,17 +360,25 @@
 
 .recruit-gallery-marquee {
     width: 100%;
+    overflow: hidden;
 }
 
 .recruit-gallery-grid {
     display: flex;
-    width: 100%;
+    width: max-content;
     gap: 20px;
+    padding-right: 20px; /* Essential for -50% perfect math (10 items = 9 gaps + 1 padding = 10 gaps total) */
+    animation: marquee-desktop 25s linear infinite;
+}
+
+.recruit-gallery-grid.is-paused {
+    animation-play-state: paused;
 }
 
 .recruit-gallery-item {
-    flex: 1;
-    min-width: 0;
+    flex: 0 0 auto;
+    /* 3 images visible */
+    width: calc((100vw - 40px) / 3);
 }
 
 .recruit-gallery-item img {
@@ -378,6 +386,11 @@
     height: 100%;
     object-fit: cover;
     display: block;
+}
+
+@keyframes marquee-desktop {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
 }
 
 @media (max-width: 767px) {
