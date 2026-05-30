@@ -24,6 +24,8 @@
     font-weight: 500;
     margin-bottom: 20px;
     margin-top: 50px;
+    padding-left: 1.3em;
+    text-indent: -1.3em;
 }
 
 .privacy-list {
@@ -48,4 +50,11 @@
 /* Helper to reduce the large gap before lists */
 .privacy-list-intro {
     margin-bottom: 15px !important;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .privacy-page-section {
+        padding-bottom: 40px;
+    }
 }

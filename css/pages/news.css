@@ -130,29 +130,40 @@
 /* Responsive Design */
 @media (max-width: 768px) {
     .news-section {
-        padding: 50px 0;
+        padding: 20px 0 50px;
     }
 
     .news-item {
-        flex-direction: column;
-        padding: 25px 0;
-        gap: 12px;
+        display: grid;
+        grid-template-columns: auto 1fr;
+        grid-template-areas: 
+            "badge date"
+            "content content";
+        align-items: center;
+        padding: 15px 0;
+        row-gap: 10px;
+        column-gap: 15px;
     }
 
     .news-badge-col {
+        grid-area: badge;
         flex: none;
     }
 
     .news-date-col {
+        grid-area: date;
         flex: none;
         padding-top: 0;
     }
 
     .news-content-col {
+        grid-area: content;
         padding-top: 0;
     }
 
     .news-title {
         font-size: 1.05rem;
+        text-decoration: underline;
+        text-underline-offset: 3px;
     }
 }

@@ -114,7 +114,7 @@
     }
     
     .news-detail-header {
-        margin-left: -20px;
+        margin-left: 0;
     }
     
     .news-detail-title {
@@ -132,7 +132,26 @@
         margin-top: 40px;
     }
 
+    .news-detail-separator {
+        width: 100%;
+        margin: 40px 0;
+    }
+
+    .news-detail-back {
+        justify-content: center;
+    }
+
+    .back-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 240px;
+        padding: 15px 20px;
+    }
+
     .back-btn::before {
-        width: 30px;
+        left: -44px;
+        width: 80px;
+        z-index: 2;
     }
 }

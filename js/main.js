@@ -63,6 +63,7 @@ document.addEventListener('DOMContentLoaded', () => {
         initScrollToTop();
         initFAQ();
         initCVSlider();
+        initVoiceRelatedSlider();
         initStaffMobilePagination();
         initStaffModal();
     });
@@ -140,6 +141,26 @@ document.addEventListener('DOMContentLoaded', () => {
             const cardStyle = window.getComputedStyle(cards[0]);
             const cardWidth = cards[0].offsetWidth + parseInt(cardStyle.marginRight) || parseInt(window.getComputedStyle(grid).gap) || 30;
             
+            grid.scrollBy({ left: -cardWidth, behavior: 'smooth' });
+        });
+    }
+
+    // Voice Detail Related Slider Logic
+    function initVoiceRelatedSlider() {
+        const grid = document.querySelector('.voice-related-slider .voice-grid');
+        const prevBtn = document.querySelector('.slider-btn.prev');
+        const nextBtn = document.querySelector('.slider-btn.next');
+        const cards = document.querySelectorAll('.voice-related-slider .voice-card');
+        
+        if (!grid || !prevBtn || !nextBtn || cards.length === 0) return;
+
+        nextBtn.addEventListener('click', () => {
+            const cardWidth = cards[0].offsetWidth + (parseInt(window.getComputedStyle(grid).gap) || 20);
+            grid.scrollBy({ left: cardWidth, behavior: 'smooth' });
+        });
+
+        prevBtn.addEventListener('click', () => {
+            const cardWidth = cards[0].offsetWidth + (parseInt(window.getComputedStyle(grid).gap) || 20);
             grid.scrollBy({ left: -cardWidth, behavior: 'smooth' });
         });
     }

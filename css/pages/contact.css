@@ -262,11 +262,147 @@
     transform: translateY(-2px);
 }
 
+/* Confirmation Screen Styles */
+.confirm-page-title {
+    color: var(--primary-color);
+    font-size: 28px;
+    font-weight: 500;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.confirm-intro {
+    font-size: var(--font-sm);
+    line-height: 1.8;
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.confirm-data-wrapper {
+    max-width: 1000px;
+    margin: 0 auto 60px;
+}
+
+.confirm-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 10px;
+}
+
+.confirm-table th,
+.confirm-table td {
+    padding: 25px 0;
+    border-bottom: 1px solid #D9D9D9;
+    font-size: var(--font-sm);
+    line-height: 1.8;
+    text-align: left;
+    vertical-align: top;
+}
+
+.confirm-table th {
+    width: 250px;
+    font-weight: 500;
+    color: #333;
+}
+
+.confirm-table td {
+    color: #666;
+}
+
+/* Thank You Screen Styles */
+.thanks-message {
+    max-width: 800px;
+    margin: 0 auto;
+    font-size: var(--font-sm);
+    line-height: 1.8;
+    color: #333;
+}
+
+.mt-30 {
+    margin-top: 30px;
+}
+
+.back-top-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 240px;
+    padding: 15px 20px;
+    border: 1px solid #333;
+    border-radius: 40px;
+    color: #333;
+    text-decoration: none;
+    font-size: var(--font-sm);
+    background-color: #fff;
+    position: relative;
+    transition: all 0.3s;
+}
+
+.back-top-btn:hover {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    color: #fff;
+}
+
+.back-top-btn::before {
+    content: "";
+    position: absolute;
+    /* Line is 80px total. 55% outside = 44px outside, 45% inside = 36px inside */
+    left: -44px;
+    top: 50%;
+    width: 80px;
+    height: 1px;
+    background-color: #333;
+    z-index: 2;
+    transition: all 0.3s;
+}
+
+/* Ensure the line color doesn't change to white on hover, keeping it dark */
+.back-top-btn:hover::before {
+    background-color: #333;
+}
+
 /* Responsive */
 @media (max-width: 768px) {
     .contact-info-banners {
         flex-direction: column;
         gap: 15px;
+    }
+
+    .contact-banner {
+        width: 100%;
+        padding: 30px 15px;
+        white-space: normal;
+        border-radius: 6px;
+    }
+    
+    .banner-phone {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .banner-phone .phone-label {
+        font-size: var(--font-sm);
+    }
+
+    .banner-phone .phone-main-wrap {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 5px 0;
+    }
+    
+    .banner-phone .phone-icon {
+        margin: 0 8px 0 0;
+    }
+    
+    .banner-phone .phone-number {
+        font-size: 26px;
+        margin: 0;
+    }
+    
+    .banner-phone .phone-hours {
+        margin: 0;
     }
     
     .checkbox-group {
@@ -276,5 +412,33 @@
 
     .checkbox-group.cols-4 {
         grid-template-columns: 1fr;
+    }
+
+    /* Confirmation Screen Mobile */
+    .confirm-page-title {
+        font-size: 24px;
+        margin-bottom: 30px;
+    }
+
+    .confirm-intro {
+        text-align: left;
+        margin-bottom: 40px;
+    }
+
+    .confirm-table th,
+    .confirm-table td {
+        display: block;
+        width: 100%;
+        padding: 15px 0;
+    }
+    
+    .confirm-table th {
+        border-bottom: none;
+        padding-bottom: 5px;
+    }
+    
+    .confirm-table td {
+        padding-top: 0;
+        padding-left: 20px;
     }
 }

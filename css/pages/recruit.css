@@ -37,8 +37,8 @@
     background-color: var(--primary-color);
     color: var(--white);
     padding: 15px 60px;
-    border-radius: 8px;
-    font-size: var(--font-sm);
+    border-radius: 16px;
+    font-size: var(--font-md);
     font-weight: 700;
     text-decoration: none;
     transition: opacity 0.3s ease;
@@ -331,9 +331,15 @@
     }
 
     .recruit-interview-img {
-        flex: 0 0 100%;
-        max-width: 100%;
-        margin-left: 0;
+        flex: 0 0 calc(100% + 20px);
+        max-width: calc(100% + 20px);
+        margin-left: -20px;
+        margin-right: 0;
+    }
+
+    .recruit-interview-img img,
+    .recruit-interview-img::after {
+        border-radius: 0 20px 20px 0;
     }
 
     .recruit-interview-content {
@@ -349,6 +355,11 @@
 .recruit-gallery-section {
     width: 100%;
     padding-bottom: 100px;
+    overflow: hidden;
+}
+
+.recruit-gallery-marquee {
+    width: 100%;
 }
 
 .recruit-gallery-grid {
@@ -371,7 +382,23 @@
 
 @media (max-width: 767px) {
     .recruit-gallery-grid {
-        flex-direction: column;
-        gap: 15px;
+        flex-direction: row;
+        width: max-content;
+        gap: 0;
+        animation: marquee 20s ease-in-out infinite;
+    }
+    
+    .recruit-gallery-item {
+        flex: 0 0 100vw;
+        width: 100vw;
+    }
+
+    @keyframes marquee {
+        0%, 15% { transform: translateX(0); }
+        20%, 35% { transform: translateX(-10%); }
+        40%, 55% { transform: translateX(-20%); }
+        60%, 75% { transform: translateX(-30%); }
+        80%, 95% { transform: translateX(-40%); }
+        100% { transform: translateX(-50%); }
     }
 }

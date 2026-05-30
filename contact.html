@@ -25,7 +25,9 @@
 
         <section class="contact-section">
             <div class="container contact-container">
-                <p class="contact-intro">
+                <!-- 1. INPUT SCREEN -->
+                <div id="step-input" class="form-step active">
+                    <p class="contact-intro">
                     当事務所ならびにサービスに関して、ご質問や詳しい情報等をご希望の際は、以下のフォームにより簡単にお問い合わせいただけます。<br>
                     担当者が折り返しご連絡いたしますので、お気軽にお問い合わせください。
                 </p>
@@ -35,7 +37,12 @@
                         初回のご相談は無料です
                     </div>
                     <div class="contact-banner banner-phone">
-                        お電話でのご相談は <span class="phone-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg></span> <span class="phone-number">03-3408-7488</span> <span class="phone-hours">平日 : 9:30～17:30</span>
+                        <span class="phone-label">お電話でのご相談は</span> 
+                        <span class="phone-main-wrap">
+                            <span class="phone-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg></span>
+                            <span class="phone-number">03-3408-7488</span>
+                        </span>
+                        <span class="phone-hours">平日 : 9:30～17:30</span>
                     </div>
                 </div>
 
@@ -156,12 +163,98 @@
                     </div>
 
                     <div class="form-submit-wrap">
-                        <button type="submit" class="form-submit-btn">
-                            <span>送信する</span>
+                        <button type="button" class="form-submit-btn" onclick="document.getElementById('step-input').style.display='none'; document.getElementById('step-confirm').style.display='block'; window.scrollTo(0,0);">
+                            <span>確認画面へ進む</span>
                             <span class="submit-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
                         </button>
                     </div>
                 </form>
+                </div>
+                <!-- /#step-input -->
+
+                <!-- 2. CONFIRMATION SCREEN -->
+                <div id="step-confirm" class="form-step" style="display: none;">
+                    <h2 class="confirm-page-title">お問い合わせ確認</h2>
+                    
+                    <p class="confirm-intro">
+                        送信内容は以下になります。よろしければ、ページ下部の送信するボタンを押してください。
+                    </p>
+
+                    <div class="confirm-data-wrapper">
+                        <h3 class="form-section-title">お問い合わせ項目</h3>
+                        <table class="confirm-table">
+                            <tbody>
+                                <tr>
+                                    <th>お問い合わせ項目</th>
+                                    <td>無料相談のお申し込み<br>サービス内容・料金について</td>
+                                </tr>
+                                <tr>
+                                    <th>ご検討中のサービス</th>
+                                    <td>税務顧問・日常サポート</td>
+                                </tr>
+                                <tr>
+                                    <th>お問い合わせ内容</th>
+                                    <td>記入された内容がはいります。記入された内容がはいります。記入された内容がはいります。記入された内容がはいります。記入された内容がはいります。記入された内容がはいります。記入された内容がはいります。記入された内容がはいります。記入された内容がはいります。</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <h3 class="form-section-title mt-60">記入者情報</h3>
+                        <table class="confirm-table">
+                            <tbody>
+                                <tr>
+                                    <th>お名前</th>
+                                    <td>税務　太郎</td>
+                                </tr>
+                                <tr>
+                                    <th>お名前（ふりがな）</th>
+                                    <td>ぜいむ　たろう</td>
+                                </tr>
+                                <tr>
+                                    <th>会社名</th>
+                                    <td>税務株式会社</td>
+                                </tr>
+                                <tr>
+                                    <th>メールアドレス</th>
+                                    <td>xxx@xxx.xxx.jp</td>
+                                </tr>
+                                <tr>
+                                    <th>電話番号</th>
+                                    <td>000-0000-0000</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="form-submit-wrap">
+                        <button type="button" class="form-submit-btn" onclick="document.getElementById('step-confirm').style.display='none'; document.getElementById('step-thanks').style.display='block'; window.scrollTo(0,0);">
+                            <span>送信する</span>
+                            <span class="submit-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+                        </button>
+                    </div>
+                </div>
+                <!-- /#step-confirm -->
+
+                <!-- 3. THANK YOU SCREEN -->
+                <div id="step-thanks" class="form-step" style="display: none;">
+                    <h2 class="confirm-page-title">お問い合わせ完了</h2>
+                    
+                    <div class="thanks-message">
+                        <p>
+                            このたびは、佐々木会計事務所へお問い合わせいただき誠にありがとうございます。<br>
+                            内容を確認のうえ、担当者より順次ご連絡させていただきます。<br>
+                            通常、5営業日以内にご返信しております。万が一、返信が届かない場合は、メールアドレスの入力間違いや迷惑メールフォルダへの振り分け<br class="hide-sp">の可能性がございますので、ご確認をお願いいたします。
+                        </p>
+                        <p class="mt-30">
+                            ご連絡まで今しばらくお待ちください。
+                        </p>
+                    </div>
+
+                    <div class="form-submit-wrap" style="margin-top: 60px;">
+                        <a href="index.html" class="back-top-btn">TOPへ戻る</a>
+                    </div>
+                </div>
+                <!-- /#step-thanks -->
             </div>
         </section>
     </main>

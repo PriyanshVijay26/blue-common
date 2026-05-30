@@ -21,7 +21,7 @@
 }
 
 .about-content-text {
-    font-size: 18px;
+    font-size: 20px;
     line-height: 1.6;
     color: #333333;
     margin-bottom: 80px;
@@ -156,4 +156,119 @@
 .service-tabs .service-tab {
     flex: 1;
     max-width: 290px;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 991px) {
+    .about-content-title {
+        font-size: 32px;
+    }
+    .about-content-text {
+        font-size: 14px;
+        line-height: 1.8;
+    }
+    .about-feature-text {
+        font-size: 14px;
+    }
+
+    .about-feature-content {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .about-feature-image {
+        max-width: 100%;
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    /* 3, 2, 2 Logos layout with Flexbox */
+    .features-logos {
+        width: 100%;
+        justify-content: center;
+    }
+    .logos-wrapper {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px 10px;
+        width: 100%;
+        max-width: 300px;
+        margin: 0 auto;
+    }
+    .logo-group {
+        display: contents;
+    }
+    
+    .partner-logo {
+        flex: 0 0 calc(33.333% - 12px);
+        max-width: 100px;
+        height: auto;
+        max-height: 80px;
+        object-fit: contain;
+    }
+    
+    .logo-group:nth-child(1) .partner-logo:nth-child(4),
+    .logo-group:nth-child(2) .partner-logo:nth-child(1),
+    .logo-group:nth-child(2) .partner-logo:nth-child(2),
+    .logo-group:nth-child(2) .partner-logo:nth-child(3) {
+        flex: 0 0 calc(50% - 15px);
+        max-width: 150px;
+    }
+
+    /* Mobile-specific logo reordering to match the design */
+    .logo-group:nth-child(1) .partner-logo:nth-child(2) { order: 1; } /* Advisor */
+    .logo-group:nth-child(1) .partner-logo:nth-child(1) { order: 2; } /* Freee */
+    .logo-group:nth-child(1) .partner-logo:nth-child(3) { order: 3; } /* Expert Acc */
+    
+    .logo-group:nth-child(2) .partner-logo:nth-child(2) { order: 4; } /* MF Platinum */
+    .logo-group:nth-child(2) .partner-logo:nth-child(1) { order: 5; } /* MF Logo */
+    
+    .logo-group:nth-child(2) .partner-logo:nth-child(3) { order: 6; } /* SME Agency */
+    .logo-group:nth-child(1) .partner-logo:nth-child(4) { order: 7; } /* Expert HR / SME 2 */
+
+    /* Features group stacking */
+    .about-features-group {
+        flex-direction: column;
+        margin-top: 40px;
+        gap: 60px;
+    }
+    .about-features-group-right {
+        margin-right: -5vw;
+        width: calc(100% + 5vw);
+    }
+    .about-features-group-right img {
+        border-radius: 20px 0 0 20px;
+    }
+
+    /* Button overflow and line fix */
+    .about-feature-btn {
+        width: calc(100% - 40px);
+        max-width: 320px;
+        margin-left: 40px;
+        padding: 10px 15px 10px 35px;
+        font-size: 13px;
+    }
+    .about-feature-btn::before {
+        left: -40px;
+        width: 65px;
+    }
+}
+
+@media (max-width: 768px) {
+    .service-tabs {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 5px;
+    }
+    .service-tabs .service-tab {
+        font-size: 11px;
+        padding: 8px 5px;
+        min-height: 54px;
+    }
+    .about-features-group-right {
+        margin-right: -20px;
+        width: calc(100% + 20px);
+    }
 }

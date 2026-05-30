@@ -176,21 +176,15 @@
         justify-content: flex-start;
         gap: 8px;
         margin-bottom: 30px;
-        overflow-x: auto;
-        padding-bottom: 10px; /* Space for scrollbar if any */
-        /* Hide scrollbar */
-        -ms-overflow-style: none;
-        scrollbar-width: none;
-    }
-    
-    .voice-tabs::-webkit-scrollbar {
-        display: none;
+        flex-wrap: wrap;
     }
     
     .voice-tab {
-        padding: 8px 20px;
+        width: calc((100% - 16px) / 3);
+        padding: 8px 0;
         font-size: var(--font-xs);
         white-space: nowrap;
+        text-align: center;
     }
     
     .voice-grid {
@@ -200,5 +194,10 @@
     
     .voice-card-title {
         font-size: var(--font-sm);
+    }
+    
+    .voice-card-tag {
+        font-size: 0.85rem;
+        padding: 5px 16px;
     }
 }
