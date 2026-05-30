@@ -132,67 +132,50 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!grid || !prevBtn || !nextBtn || cards.length === 0) return;
 
         nextBtn.addEventListener('click', () => {
-            if (window.innerWidth <= 991) {
-                const cardStyle = window.getComputedStyle(cards[0]);
-                const gap = parseInt(window.getComputedStyle(grid).gap) || 0;
-                const cardWidth = cards[0].offsetWidth + gap;
-                grid.scrollBy({ left: cardWidth, behavior: 'smooth' });
-            } else {
-                if (grid.isAnimating) return;
-                grid.isAnimating = true;
+            if (grid.isAnimating) return;
+            grid.isAnimating = true;
 
-                const firstCard = grid.firstElementChild;
-                const gap = parseInt(window.getComputedStyle(grid).gap) || 0;
-                const cardWidth = firstCard.offsetWidth + gap;
+            const firstCard = grid.firstElementChild;
+            const gap = parseInt(window.getComputedStyle(grid).gap) || 0;
+            const cardWidth = firstCard.offsetWidth + gap;
 
-                grid.style.transition = 'transform 0.5s ease';
-                grid.style.transform = `translateX(-${cardWidth}px)`;
+            grid.style.transition = 'transform 0.5s ease';
+            grid.style.transform = `translateX(-${cardWidth}px)`;
 
-                grid.addEventListener('transitionend', function() {
-                    grid.style.transition = 'none';
-                    grid.style.transform = 'translateX(0)';
-                    grid.appendChild(firstCard);
-                    grid.isAnimating = false;
-                }, { once: true });
-            }
+            grid.addEventListener('transitionend', function() {
+                grid.style.transition = 'none';
+                grid.style.transform = 'translateX(0)';
+                grid.appendChild(firstCard);
+                grid.isAnimating = false;
+            }, { once: true });
         });
 
         prevBtn.addEventListener('click', () => {
-            if (window.innerWidth <= 991) {
-                const cardStyle = window.getComputedStyle(cards[0]);
-                const gap = parseInt(window.getComputedStyle(grid).gap) || 0;
-                const cardWidth = cards[0].offsetWidth + gap;
-                grid.scrollBy({ left: -cardWidth, behavior: 'smooth' });
-            } else {
-                if (grid.isAnimating) return;
-                grid.isAnimating = true;
+            if (grid.isAnimating) return;
+            grid.isAnimating = true;
 
-                const lastCard = grid.lastElementChild;
-                const gap = parseInt(window.getComputedStyle(grid).gap) || 0;
-                const cardWidth = lastCard.offsetWidth + gap;
+            const lastCard = grid.lastElementChild;
+            const gap = parseInt(window.getComputedStyle(grid).gap) || 0;
+            const cardWidth = lastCard.offsetWidth + gap;
 
-                grid.style.transition = 'none';
-                grid.insertBefore(lastCard, grid.firstElementChild);
-                grid.style.transform = `translateX(-${cardWidth}px)`;
+            grid.style.transition = 'none';
+            grid.insertBefore(lastCard, grid.firstElementChild);
+            grid.style.transform = `translateX(-${cardWidth}px)`;
 
+            requestAnimationFrame(() => {
                 requestAnimationFrame(() => {
-                    requestAnimationFrame(() => {
-                        grid.style.transition = 'transform 0.5s ease';
-                        grid.style.transform = 'translateX(0)';
-                        
-                        grid.addEventListener('transitionend', function() {
-                            grid.isAnimating = false;
-                        }, { once: true });
-                    });
+                    grid.style.transition = 'transform 0.5s ease';
+                    grid.style.transform = 'translateX(0)';
+                    
+                    grid.addEventListener('transitionend', function() {
+                        grid.isAnimating = false;
+                    }, { once: true });
                 });
-            }
+            });
         });
 
         window.addEventListener('resize', () => {
-            if (window.innerWidth <= 991) {
-                grid.style.transform = '';
-                grid.style.transition = '';
-            }
+            // No action needed on resize for transform resetting now
         });
     }
 
@@ -206,13 +189,50 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!grid || !prevBtn || !nextBtn || cards.length === 0) return;
 
         nextBtn.addEventListener('click', () => {
-            const cardWidth = cards[0].offsetWidth + (parseInt(window.getComputedStyle(grid).gap) || 20);
-            grid.scrollBy({ left: cardWidth, behavior: 'smooth' });
+            if (grid.isAnimating) return;
+            grid.isAnimating = true;
+
+            const firstCard = grid.firstElementChild;
+            const gap = parseInt(window.getComputedStyle(grid).gap) || 0;
+            const cardWidth = firstCard.offsetWidth + gap;
+
+            grid.style.transition = 'transform 0.5s ease';
+            grid.style.transform = `translateX(-${cardWidth}px)`;
+
+            grid.addEventListener('transitionend', function() {
+                grid.style.transition = 'none';
+                grid.style.transform = 'translateX(0)';
+                grid.appendChild(firstCard);
+                grid.isAnimating = false;
+            }, { once: true });
         });
 
         prevBtn.addEventListener('click', () => {
-            const cardWidth = cards[0].offsetWidth + (parseInt(window.getComputedStyle(grid).gap) || 20);
-            grid.scrollBy({ left: -cardWidth, behavior: 'smooth' });
+            if (grid.isAnimating) return;
+            grid.isAnimating = true;
+
+            const lastCard = grid.lastElementChild;
+            const gap = parseInt(window.getComputedStyle(grid).gap) || 0;
+            const cardWidth = lastCard.offsetWidth + gap;
+
+            grid.style.transition = 'none';
+            grid.insertBefore(lastCard, grid.firstElementChild);
+            grid.style.transform = `translateX(-${cardWidth}px)`;
+
+            requestAnimationFrame(() => {
+                requestAnimationFrame(() => {
+                    grid.style.transition = 'transform 0.5s ease';
+                    grid.style.transform = 'translateX(0)';
+                    
+                    grid.addEventListener('transitionend', function() {
+                        grid.isAnimating = false;
+                    }, { once: true });
+                });
+            });
+        });
+
+        window.addEventListener('resize', () => {
+            // No action needed on resize for transform resetting now
         });
     }
 

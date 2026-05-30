@@ -188,6 +188,19 @@
     height: 20px;
 }
 
+@media (min-width: 992px) {
+    .voice-related-slider .voice-grid {
+        display: flex;
+        flex-wrap: nowrap;
+        gap: 30px;
+    }
+    
+    .voice-related-slider .voice-card {
+        flex: 0 0 calc((100% - 60px) / 3);
+        min-width: 0;
+    }
+}
+
 @media (max-width: 991px) {
     .voice-detail-profile {
         flex-direction: column;
@@ -218,20 +231,11 @@
     .voice-related-slider .voice-grid {
         display: flex;
         flex-wrap: nowrap;
-        overflow-x: auto;
-        scroll-snap-type: x mandatory;
-        scrollbar-width: none;
-        -ms-overflow-style: none;
         gap: 20px;
-    }
-    
-    .voice-related-slider .voice-grid::-webkit-scrollbar {
-        display: none;
     }
     
     .voice-related-slider .voice-card {
         flex: 0 0 100%;
-        scroll-snap-align: center;
     }
     
     .slider-btn {
