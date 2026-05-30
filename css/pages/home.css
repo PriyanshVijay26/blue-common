@@ -457,6 +457,18 @@
     display: block;
 }
 
+.cv-slider-viewport {
+    width: 100%;
+}
+
+@media (min-width: 992px) {
+    .cv-slider-viewport {
+        box-sizing: content-box;
+        padding-right: calc(8% + 60px);
+        overflow: hidden;
+    }
+}
+
 .cv-grid {
     display: flex;
     gap: 30px;

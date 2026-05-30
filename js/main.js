@@ -129,19 +129,51 @@ document.addEventListener('DOMContentLoaded', () => {
         
         if (!grid || !prevBtn || !nextBtn || cards.length === 0) return;
 
+        let currentIndex = 0;
+
         nextBtn.addEventListener('click', () => {
-            // Get the width of one card plus its margin/gap
-            const cardStyle = window.getComputedStyle(cards[0]);
-            const cardWidth = cards[0].offsetWidth + parseInt(cardStyle.marginRight) || parseInt(window.getComputedStyle(grid).gap) || 30;
-            
-            grid.scrollBy({ left: cardWidth, behavior: 'smooth' });
+            if (window.innerWidth <= 991) {
+                const cardStyle = window.getComputedStyle(cards[0]);
+                const gap = parseInt(window.getComputedStyle(grid).gap) || 0;
+                const cardWidth = cards[0].offsetWidth + gap;
+                grid.scrollBy({ left: cardWidth, behavior: 'smooth' });
+            } else {
+                if (currentIndex < cards.length - 3) {
+                    currentIndex++;
+                    updateTransform();
+                }
+            }
         });
 
         prevBtn.addEventListener('click', () => {
-            const cardStyle = window.getComputedStyle(cards[0]);
-            const cardWidth = cards[0].offsetWidth + parseInt(cardStyle.marginRight) || parseInt(window.getComputedStyle(grid).gap) || 30;
-            
-            grid.scrollBy({ left: -cardWidth, behavior: 'smooth' });
+            if (window.innerWidth <= 991) {
+                const cardStyle = window.getComputedStyle(cards[0]);
+                const gap = parseInt(window.getComputedStyle(grid).gap) || 0;
+                const cardWidth = cards[0].offsetWidth + gap;
+                grid.scrollBy({ left: -cardWidth, behavior: 'smooth' });
+            } else {
+                if (currentIndex > 0) {
+                    currentIndex--;
+                    updateTransform();
+                }
+            }
+        });
+
+        function updateTransform() {
+            const gap = parseInt(window.getComputedStyle(grid).gap) || 0;
+            const cardWidth = cards[0].offsetWidth + gap;
+            grid.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
+            grid.style.transition = 'transform 0.5s ease';
+        }
+
+        window.addEventListener('resize', () => {
+            if (window.innerWidth <= 991) {
+                grid.style.transform = '';
+                grid.style.transition = '';
+                currentIndex = 0;
+            } else {
+                updateTransform();
+            }
         });
     }
 
