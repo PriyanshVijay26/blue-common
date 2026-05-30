@@ -175,7 +175,7 @@
 
 .footer-company-name {
     color: var(--primary-color);
-    font-size: 1.25rem;
+    font-size: 1.5rem;
     font-weight: 500;
     margin-bottom: 30px;
     letter-spacing: 0.1em;
@@ -382,6 +382,7 @@
         grid-column: 1 / -1;
         order: 1;
         margin-bottom: 0;
+        font-size: 1.25rem;
     }
 
     .footer-address-container {
