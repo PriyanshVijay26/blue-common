@@ -332,6 +332,14 @@ document.addEventListener('DOMContentLoaded', () => {
             const nameStr = nameEl ? nameEl.textContent.trim() : '';
             const deptStr = deptEl ? deptEl.textContent.trim() : '';
             
+            const hobbyEl = card.querySelector('.detail-hobby');
+            const worryEl = card.querySelector('.detail-worry');
+            const messageEl = card.querySelector('.detail-message');
+
+            const hobbyStr = hobbyEl ? hobbyEl.innerHTML : '';
+            const worryStr = worryEl ? worryEl.innerHTML : '';
+            const messageStr = messageEl ? messageEl.innerHTML : '';
+
             let themeClass = 'theme-cyan';
             let leafColor = '#0ABAB5';
             if (deptEl) {
@@ -364,14 +372,6 @@ document.addEventListener('DOMContentLoaded', () => {
 <path d="M24.5 4.56153C23.105 12.9314 8.66667 17.7283 0 19.5616C24.5 16.5615 27.5 19.5616 45.5 11.0615C49.1451 9.34019 36.5001 13.0615 31 5.56153C28.4334 2.06163 26 -4.43844 24.5 4.56153Z" fill="${leafColor}"/>
 </svg>`;
             front.appendChild(accent);
-
-            const hobbyEl = card.querySelector('.detail-hobby');
-            const worryEl = card.querySelector('.detail-worry');
-            const messageEl = card.querySelector('.detail-message');
-
-            const hobbyStr = hobbyEl ? hobbyEl.innerHTML : '';
-            const worryStr = worryEl ? worryEl.innerHTML : '';
-            const messageStr = messageEl ? messageEl.innerHTML : '';
 
             const back = document.createElement('div');
             back.className = `staff-card-back ${themeClass}`;
