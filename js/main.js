@@ -365,21 +365,29 @@ document.addEventListener('DOMContentLoaded', () => {
 </svg>`;
             front.appendChild(accent);
 
+            const hobbyEl = card.querySelector('.detail-hobby');
+            const worryEl = card.querySelector('.detail-worry');
+            const messageEl = card.querySelector('.detail-message');
+
+            const hobbyStr = hobbyEl ? hobbyEl.innerHTML : '';
+            const worryStr = worryEl ? worryEl.innerHTML : '';
+            const messageStr = messageEl ? messageEl.innerHTML : '';
+
             const back = document.createElement('div');
             back.className = `staff-card-back ${themeClass}`;
             back.innerHTML = `
                 <div class="staff-card-back-content">
                     <div class="staff-modal-section">
                         <span class="staff-modal-label">趣味</span>
-                        <p class="staff-modal-text">筋トレ・脱出ゲーム・推しのゲーム実況を観ること〇〇〇〇〇〇〇〇〇</p>
+                        <p class="staff-modal-text">${hobbyStr}</p>
                     </div>
                     <div class="staff-modal-section">
                         <span class="staff-modal-label">最近の悩み</span>
-                        <p class="staff-modal-text">健康情報を収集してすぐ実行するが、常に新しい情報に上書きされるので、過去の情報は覚えていないこと。</p>
+                        <p class="staff-modal-text">${worryStr}</p>
                     </div>
                     <div class="staff-modal-section">
                         <span class="staff-modal-label">メッセージ</span>
-                        <p class="staff-modal-text">「報告」「連絡」をこまめに行い、安心してお仕事をお任せいただけるよう心がけております。〇〇〇〇〇〇</p>
+                        <p class="staff-modal-text">${messageStr}</p>
                     </div>
                 </div>
                 <div class="staff-card-back-footer">
@@ -410,6 +418,14 @@ document.addEventListener('DOMContentLoaded', () => {
                     if (modal) {
                         if (updatedNameEl) modalName.textContent = updatedNameEl.textContent;
                         if (updatedDeptEl) modalDept.textContent = updatedDeptEl.textContent;
+
+                        const modalHobby = modal.querySelector('.staff-modal-section:nth-child(1) .staff-modal-text');
+                        const modalWorry = modal.querySelector('.staff-modal-section:nth-child(2) .staff-modal-text');
+                        const modalMessage = modal.querySelector('.staff-modal-section:nth-child(3) .staff-modal-text');
+
+                        if (modalHobby) modalHobby.innerHTML = hobbyStr;
+                        if (modalWorry) modalWorry.innerHTML = worryStr;
+                        if (modalMessage) modalMessage.innerHTML = messageStr;
 
                         modal.classList.remove('theme-cyan', 'theme-blue', 'theme-orange');
                         modal.classList.add(themeClass);
