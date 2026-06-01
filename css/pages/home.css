@@ -5,7 +5,9 @@
     margin-top: var(--header-height-dt);
     padding: 0;
     background-color: var(--white);
-    position: relative;
+    position: sticky;
+    top: var(--header-height-dt);
+    z-index: 1;
 }
 
 .hero-section::after {
@@ -85,10 +87,11 @@
 }
 
 .hero-title {
-    color: var(--primary-color);
-    font-size: clamp(1.8rem, 2vw + 1rem, 2.5rem);
+    color: #05A9B4;
+    font-size: 40px;
     font-weight: 400;
-    line-height: 1.5;
+    line-height: 64px;
+    letter-spacing: 0;
     margin-bottom: 15px;
 }
 
@@ -98,9 +101,12 @@
 }
 
 .hero-subtitle {
-    color: var(--primary-color);
-    font-size: clamp(0.9rem, 1vw + 0.5rem, 1.1rem);
-    font-weight: 500;
+    color: #05A9B4;
+    font-family: 'Outfit', sans-serif;
+    font-size: 20px;
+    font-weight: 300;
+    line-height: 60px;
+    letter-spacing: 0;
     white-space: nowrap;
 }
 
@@ -126,6 +132,20 @@
     pointer-events: none;
 }
 
+.main-bg-wrapper::after {
+    content: '';
+    position: absolute;
+    top: 60px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: var(--white);
+    z-index: -2;
+    pointer-events: none;
+}
+
+
+
 /* =========================================
    ONE STOP SECTION
    ========================================= */
@@ -134,15 +154,36 @@
 }
 
 .one-stop-content {
+    width: fit-content;
     max-width: 100%;
     margin: 0 auto;
+    text-align: left;
+    padding-left: 125px;
+}
+
+.one-stop-section .container {
+    max-width: 1400px;
+    padding: 0 20px;
 }
 
 .one-stop-content .section-desc {
-    font-size: 1rem;
-    width: 100%;
-    max-width: 1100px;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 32px;
+    letter-spacing: 0.1em;
     color: #3E3E3E;
+    text-align: left;
+    margin: 0 0 60px 0;
+}
+
+.one-stop-content .section-title {
+    font-size: 32px;
+    font-weight: 400;
+    line-height: 48px;
+    letter-spacing: 0.1em;
+    color: #3A3A3A;
+    text-align: left;
+    margin: 0 0 24px 0;
 }
 
 .one-stop-subtitle {
@@ -183,9 +224,22 @@
 }
 
 .features-text .section-title {
+    font-family: 'Noto Sans', sans-serif;
     font-weight: 400;
+    font-style: normal;
+    font-size: 32px;
+    line-height: 1.5;
+    letter-spacing: 0.1em;
     color: #777777;
-    letter-spacing: 0.05em;
+}
+
+.features-text .section-desc {
+    font-family: 'Noto Sans', sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 16px;
+    line-height: 2.0;
+    letter-spacing: 0.1em;
 }
 
 .features-logos {
@@ -897,13 +951,15 @@
 
     .hero-title {
         margin-left: 0;
-        font-size: clamp(1.5rem, 4vw + 0.5rem, 1.9rem);
+        font-size: 24px;
+        font-weight: 500;
+        line-height: 32px;
     }
 
     .hero-subtitle {
         white-space: normal;
-        line-height: 1.4;
-        font-size: clamp(0.85rem, 2vw + 0.3rem, 0.95rem);
+        font-size: 14px;
+        line-height: 14px;
     }
 
     .one-stop-content {
@@ -911,11 +967,17 @@
     }
 
     .one-stop-content .section-title {
-        font-size: 1.25rem;
+        font-size: 20px;
+        font-weight: 400;
+        line-height: 20px;
+        letter-spacing: 0.1em;
     }
 
     .one-stop-content .section-desc {
-        font-size: 0.85rem;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 28px;
+        letter-spacing: 0.05em;
     }
 
     .features-text,
@@ -924,13 +986,26 @@
         padding: 0 5px 0 25px;
     }
 
-    .features-text .section-title,
+    .features-text .section-title {
+        font-size: 20px;
+        line-height: 1.0;
+        letter-spacing: 0.1em;
+    }
+
     .about-text .section-title,
     .communication-title {
         font-size: 1.25rem;
     }
 
-    .features-text .section-desc,
+    .features-text .section-desc {
+        font-family: 'Noto Sans', sans-serif;
+        font-weight: 400;
+        font-style: normal;
+        font-size: 14px;
+        line-height: 2.0;
+        letter-spacing: 0.05em;
+    }
+
     .about-text .section-desc,
     .communication-desc {
         font-size: 0.85rem;
@@ -1090,10 +1165,8 @@
     }
 
     .hero-title {
-        font-size: 1.45rem;
     }
 
     .hero-subtitle {
-        font-size: 0.8rem;
     }
 }
